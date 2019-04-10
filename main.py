@@ -1,4 +1,6 @@
 import facialRecognition.deteccao_captura as detector
+import utils.libs.db as db
+
 import utils.libs.logger as logger
 
 
@@ -7,7 +9,8 @@ def main() :
 
     if bSensorCapture == True :
         userId = detector.getUserFromCamera()
-        logger.log('Usuário detectado: ' + userId)
+        user = db.getUserData(userId)
+        logger.log('Usuário detectado: ' + str(user[0]))
 
 
 if __name__ == '__main__' :
