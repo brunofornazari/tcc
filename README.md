@@ -10,5 +10,6 @@ Para usar o modulo, lembrar dos requisitos mínimos:
 - sqlite studio 3.0
 - opencv
 - Pickle
+- speech_recognition
 
 Se possível, usar um env do python exclusivo para o projeto afim de evitar conflitos.
