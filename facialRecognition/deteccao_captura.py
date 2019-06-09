@@ -14,8 +14,8 @@ def getUserFromCamera() :
     detectorFace = dlib.get_frontal_face_detector()
     detectorPontos = dlib.shape_predictor(os.path.abspath("resources/shape_predictor_68_face_landmarks.dat"))
     reconhecimentoFacial = dlib.face_recognition_model_v1("resources/dlib_face_recognition_resnet_model_v1.dat")
-    indices = np.load("resources/indices_captura.pickle")
-    descritoresFaciais = np.load("resources/descritores_captura.npy")
+    indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
+    descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
     cam = cv2.VideoCapture(0)
     userId = 0
