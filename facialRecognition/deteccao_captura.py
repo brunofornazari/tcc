@@ -30,7 +30,7 @@ def getUserFromCamera() :
             camera.start_preview()
             time.sleep(3)
             camera.capture(cap, format="bgr")
-            imagem = cap.array()
+            imagem = cap.array
             print("okay1")
             print("okay3", imagem)
         print("okay")
