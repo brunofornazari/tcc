@@ -2,7 +2,8 @@ import sys
 
 
 def log(sMessage) :
-    print(sMessage)
+    print('')
+    #print(sMessage)
 
 
 def logStatus(sMessage, iCurrent, iMax) :
