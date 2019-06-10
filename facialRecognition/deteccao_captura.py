@@ -1,6 +1,7 @@
 import os
-import glob
-import _pickle as cPickle
+import picamera
+import picamera.array
+import time
 import dlib
 import cv2
 import numpy as np
@@ -23,7 +24,14 @@ def getUserFromCamera() :
     logger.log('Detectando usuário...')
 
     while userId == 0 :
-        ret, imagem = cam.read()
+        with picamera.PiCamera() as camera:
+            cap = picamera.array.PiRGBArray(camera)
+            camera.resolution = (640, 480)
+            camera.start_preview()
+            time.sleep(3)
+            camera.capture(cap, format="bgr")
+            imagem = cap.array()
+
         facesDetectadas = detectorFace(imagem, 2)
         for face in facesDetectadas :
             e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
