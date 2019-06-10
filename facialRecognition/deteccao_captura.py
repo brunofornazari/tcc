@@ -26,6 +26,7 @@ def getUserFromCamera() :
     logger.log('Detectando usuário...')
 
     while userId == 0 :
+        time.sleep(2)
         output = np.empty((240, 320, 3), dtype=np.uint8)
         imagem = camera.capture(output, 'rgb')
         facesDetectadas = detectorFace(imagem, 2)
