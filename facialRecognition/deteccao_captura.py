@@ -29,6 +29,7 @@ def getUserFromCamera() :
         time.sleep(2)
         imagem = np.empty((240, 320, 3), dtype=np.uint8)
         camera.capture(imagem, 'bgr')
+        cv2.imshow('img', imagem)
         facesDetectadas = detectorFace(imagem, 2)
         for face in facesDetectadas :
             e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
