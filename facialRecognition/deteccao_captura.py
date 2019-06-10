@@ -19,45 +19,39 @@ def getUserFromCamera() :
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
     camera = PiCamera()
-    camera.resolution = (640, 480)
+    camera.resolution(640, 480)
     camera.framerate = 32
-    rawCapture = PiRGBArray(camera, size=(640, 480))
     userId = 0
 
     logger.log('Detectando usuário...')
 
+    while userId == 0 :
+        output = np.empty((240, 320, 3), dtype=np.uint8)
+        imagem = camera.capture(output, 'rgb')
+        facesDetectadas = detectorFace(imagem, 2)
+        for face in facesDetectadas :
+            e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
+            pontosFaciais = detectorPontos(imagem, face)
+            descritorFacial = reconhecimentoFacial.compute_face_descriptor(imagem, pontosFaciais)
 
+            listaDescritorFacial = [fd for fd in descritorFacial]
+            npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
+            npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
 
-    for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-        if(userId == 0):
-            imagem = frame.array
-            imagem.setflags(write=True)
+            distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
+            minimo = np.argmin(distancias)
+            distanciaMinima = distancias[minimo]
 
-            facesDetectadas = detectorFace(imagem, 2)
-            for face in facesDetectadas :
-                e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
-                pontosFaciais = detectorPontos(imagem, face)
-                descritorFacial = reconhecimentoFacial.compute_face_descriptor(imagem, pontosFaciais)
+            if distanciaMinima <= limiar :
+                nome = os.path.split(indices[minimo])[1].split(".")[0]
+                userId = nome
+                logger.log('Usuário detectado')
+            else :
+                nome = "unknown"
 
-                listaDescritorFacial = [fd for fd in descritorFacial]
-                npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
-                npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
-
-                distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
-                minimo = np.argmin(distancias)
-                distanciaMinima = distancias[minimo]
-
-                if distanciaMinima <= limiar :
-                    nome = os.path.split(indices[minimo])[1].split(".")[0]
-                    userId = nome
-                    logger.log('Usuário detectado')
-                else :
-                    nome = "unknown"
-
-            #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
-            if cv2.waitKey(1) == ord('q'):
-                break
-        rawCapture.truncate(0)
+        #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
+        if cv2.waitKey(1) == ord('q'):
+            break
 
     cv2.destroyAllWindows()
 
