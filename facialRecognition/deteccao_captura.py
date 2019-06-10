@@ -28,13 +28,11 @@ def getUserFromCamera() :
             cap = picamera.array.PiRGBArray(camera)
             camera.resolution = (640, 480)
             camera.start_preview()
-            time.sleep(3)
+            time.sleep(0.1)
             camera.capture(cap, format="bgr")
             imagem = cap.array
-            print("okay1")
-            print("okay3", imagem)
-        print("okay")
-        print("okay2", imagem)
+            imagem.setflags(write=True)
+
         facesDetectadas = detectorFace(imagem, 2)
         for face in facesDetectadas :
             e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
