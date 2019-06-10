@@ -19,7 +19,7 @@ def getUserFromCamera() :
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
     camera = PiCamera()
-    camera.resolution = (640, 480)
+    camera.resolution = (320, 240)
     camera.framerate = 32
     userId = 0
 
@@ -27,8 +27,8 @@ def getUserFromCamera() :
 
     while userId == 0 :
         time.sleep(2)
-        output = np.empty((240, 320, 3), dtype=np.uint8)
-        imagem = camera.capture(output, 'rgb')
+        imagem = np.empty((240, 320, 3), dtype=np.uint8)
+        camera.capture(imagem, 'bgr')
         facesDetectadas = detectorFace(imagem, 2)
         for face in facesDetectadas :
             e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
