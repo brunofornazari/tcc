@@ -19,7 +19,7 @@ def getUserFromCamera() :
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
     camera = PiCamera()
-    camera.resolution(640, 480)
+    camera.resolution = (640, 480)
     camera.framerate = 32
     userId = 0
 
