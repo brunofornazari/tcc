@@ -45,8 +45,7 @@ def getUserFromCamera() :
 
             if distanciaMinima <= limiar :
 
-                nome = os.path.split(indices[minimo])[1].split("\\")[0]
-                print(nome)
+                nome = os.path.split(indices[minimo])[1].split("\\")[1]
                 userId = nome
                 logger.log('Usuário detectado')
             else :

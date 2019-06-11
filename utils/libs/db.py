@@ -6,7 +6,6 @@ dbName = 'TCC-database.db'
 def getUserData(sId) :
     conn = sqlite3.connect(dbName)
     sQuery = "SELECT Name FROM users WHERE id = " + str(sId)
-    print(sQuery)
     cursor = conn.execute(sQuery)
     oUserData = None
 
