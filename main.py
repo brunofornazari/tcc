@@ -21,7 +21,7 @@ def main() :
         if response == 0:
             exit(0)
         else:
-            responseIntents = ['entities']['intent']
+            responseIntents = response['entities']['intent']
             #TODO: trabalhar os intents pela confiabilidade
             responseMetadata = responseIntents[0]['metadata']
             responseValue = responseIntents[0]['value']
