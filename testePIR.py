@@ -2,7 +2,8 @@ import RPi.GPIO as GPIO
 import time
 print("initializing teste")
 GPIO.setmode(GPIO.BCM)
-GPIO.setwarnings(False)
+print("mode set")
+#GPIO.setwarnings(False)
 
 pir_sensor = 11 #GPIO pin 21
 
