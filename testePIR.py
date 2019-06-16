@@ -10,9 +10,10 @@ pir_sensor = 11 #GPIO pin 21
 GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
 
 current_state = 0
-
+print("initializing process")
 while True:
     try:
+        print("process started")
         time.sleep(0.1)
         current_state = GPIO.input(pir_sensor)
         if current_state == 1:
