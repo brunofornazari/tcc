@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+print("initializing teste")
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
