@@ -23,5 +23,5 @@ while True:
           time.sleep(2)
           print("LED is OFF")
           time.sleep(4)
-    except KeyboardInterrupt:
+    except Exception:
         GPIO.cleanup()

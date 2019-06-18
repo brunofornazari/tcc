@@ -21,7 +21,8 @@ def detect():
           time.sleep(5)
         else :
             return True
-    except :
+    except Exception as e:
+        logger.logError(e)
         GPIO.cleanup()
 
 if __name__ == '__main__' :
