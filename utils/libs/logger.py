@@ -19,4 +19,7 @@ def logStatusPercentage(sMessage, iCurrent, iMax) :
 
 
 def logError(sMessage) :
-    print('\n\nError:{}'.format(sMessage) + '\n\n')
+    print('\n\nError: {}'.format(sMessage) + '\n\n')
+
+def logDebug(sMessage) :
+    print('\n\nDebug: {}'.format(sMessage) + '\n\n')

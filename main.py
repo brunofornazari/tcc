@@ -1,32 +1,40 @@
+import os
+
 import facialRecognition.deteccao_captura as detector
 import speech_module.speechRecognition as speech
 import utils.libs.db as db
+if os.environ['ENVTYPE'] != 'DEV' : import integration.PIR as PIR
+
 
 import utils.libs.logger as logger
 
-
 def main() :
-    bSensorCapture = True
 
-    if bSensorCapture == True :
-        userId = detector.getUserFromCamera()
-        user = db.getUserData(userId)
-        logger.log('Usuário detectado: ' + str(user[0]))
+    while(True):
+        if os.environ['ENVTYPE'] != 'DEV' :
+            bSensorCapture = PIR.detect()
+        else :
+            bSensorCapture = True
 
-        response = 1
+        if bSensorCapture == True :
+            userId = detector.getUserFromCamera()
+            user = db.getUserData(userId)
+            logger.log('Usuário detectado: ' + str(user[0]))
 
-        while response == 1:
-            response = speech.startRecognizing()
+            response = 1
 
-        if response == 0:
-            exit(0)
-        else:
-            responseIntents = response['entities']['intent']
-            #TODO: trabalhar os intents pela confiabilidade
-            responseMetadata = responseIntents[0]['metadata']
-            responseValue = responseIntents[0]['value']
+            while response == 1:
+                response = speech.startRecognizing()
 
-            #TODO: trabalhar as possibilidades e libs integradas pelo responseValue
+            if response == 0:
+                exit(0)
+            else:
+                responseIntents = response['entities']['intent']
+                #TODO: trabalhar os intents pela confiabilidade
+                responseMetadata = responseIntents[0]['metadata']
+                responseValue = responseIntents[0]['value']
+
+                #TODO: trabalhar as possibilidades e libs integradas pelo responseValue
 
 
 if __name__ == '__main__' :
