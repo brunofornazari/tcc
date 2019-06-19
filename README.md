@@ -11,5 +11,6 @@ Para usar o modulo, lembrar dos requisitos mínimos:
 - opencv
 - Pickle
 - speech_recognition
+- flask-socketio
 
 Se possível, usar um env do python exclusivo para o projeto afim de evitar conflitos.
