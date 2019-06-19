@@ -10,14 +10,13 @@ if os.environ['ENVTYPE'] != 'DEV' : import integration.PIR as PIR
 
 import utils.libs.logger as logger
 
-
-
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
 
 import utils.libs.messageHUB as messageHUB
 
-app = Flask(__name__, root_path='public/')
+dir_path = os.path.dirname(os.path.realpath(__file__)) + '/public'
+app = Flask(__name__, root_path=dir_path)
 app.config['SECRET_KEY'] = 'SOME_KEY'
 socketio = SocketIO(app)
 
@@ -40,9 +39,9 @@ def main() :
         if os.environ['ENVTYPE'] != 'DEV' :
             bSensorCapture = PIR.detect()
         else :
-            bSensorCapture = True
+            bSensorCapture = False
 
-        if bSensorCapture == True :
+        if bSensorCapture is True :
             userId = detector.getUserFromCamera()
             user = db.getUserData(userId)
             logger.log('Usuário detectado: ' + str(user[0]))

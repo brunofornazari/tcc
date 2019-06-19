@@ -3,38 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Teste</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link href="{{ url_for('static', filename='sources/css/style.css') }}" rel="stylesheet">
+    <script type="text/javascript" src="{{ url_for('static', filename='sources/js/client-socketio.js') }}"></script>
+    <script src="{{ url_for('static', filename='sources/js/jquery.js') }}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-    <script type="text/javascript">
-
-        $(document).ready(function(){
-
-           var socket = io.connect('http://127.0.0.1:5000');
-
-           socket.on('connect', function(){
-                socket.send('User has connected!');
-           });
-            setInterval(function(){
-                socket.emit('message');
-            }, 1000);
-           socket.on('message', function(msg){
-                if(msg !== '' && msg.length !== 0){
-                    $('#messages').html(msg);
-                    console.log('msg', msg);
-                }
-
-           });
-
-           $('#sendButton').on('click', function(){
-                socket.send($('#myMessage').val());
-                $('#myMessage').val('');
-           });
-
-        });
-
-    </script>
-    <h1 id="messages"></h1>
+    <script type="text/javascript" src="{{ url_for('static', filename='sources/js/script.js') }}"></script>
+    <div id="messages" class="messageContainer"></div>
 </body>
 </html>
