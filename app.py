@@ -4,9 +4,7 @@ import facialRecognition.deteccao_captura as detector
 import speech_module.speechRecognition as speech
 import utils.libs.logger as logger
 import utils.libs.db as db
-from integration.PIR import PIR
-
-if os.environ['ENVTYPE'] != 'DEV' : import integration.PIR as PIR
+if os.environ.get('ENVTYPE') != 'DEV' : from integration.PIR import PIR
 
 def main() :
     PIR(mirror)
