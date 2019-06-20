@@ -1,29 +1,29 @@
 import RPi.GPIO as GPIO
-import time
 
 import utils.libs.logger as logger
 
 GPIO.setmode(GPIO.BOARD)
 pir_sensor = 11
 GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
-current_state = 0
 
-def main():
-    pass
+class PIR:
 
-def detect():
-    try:
-        time.sleep(0.1)
+    def __init__(self, callback):
+        self._signal = 0
+        self._callback = callback
 
-        current_state = GPIO.input(pir_sensor)
+    def main(self):
+        pass
 
-        if current_state == 0:
-          time.sleep(5)
-        else :
-            return True
-    except Exception as e:
-        logger.logError(e)
-        GPIO.cleanup()
+    def motion(self):
+        self._signal = GPIO.input(pir_sensor)
+        if self._signal:
+            print("motion!")
+        else:
+            print("no motion")
+        self._callback(self._signal)
 
-if __name__ == '__main__' :
-    main()
+    def getState(self):
+        return self._signal
+
+    GPIO.add_event_detect(pir_sensor, GPIO.BOTH, callback=motion)
