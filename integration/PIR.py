@@ -15,7 +15,7 @@ class PIR:
     def main(self):
         pass
 
-    def motion(self):
+    def motion(self, SIGNAL):
         self._signal = GPIO.input(self._pir_sensor)
         if self._signal:
             print("motion!")
