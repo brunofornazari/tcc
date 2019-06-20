@@ -1,7 +1,5 @@
 import RPi.GPIO as GPIO
 
-import utils.libs.logger as logger
-
 GPIO.setmode(GPIO.BOARD)
 pir_sensor = 11
 GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
