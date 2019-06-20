@@ -1,10 +1,10 @@
 import RPi.GPIO as GPIO
 
-GPIO.setmode(GPIO.BOARD)
-pir_sensor = 11
-GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
 
 class PIR:
+    pir_sensor = 11
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
 
     def __init__(self, callback):
         self._signal = 0
