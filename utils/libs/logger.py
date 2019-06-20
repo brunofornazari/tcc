@@ -1,9 +1,9 @@
 import sys
-
+from server import messageHUB
 
 def log(sMessage) :
     print(sMessage)
-
+    messageHUB.addMessage(sMessage)
 
 def logStatus(sMessage, iCurrent, iMax) :
     sys.stdout.write('\r')
