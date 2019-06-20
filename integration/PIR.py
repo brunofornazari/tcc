@@ -17,8 +17,6 @@ class PIR:
 
     def motion(self, pir_sensor):
         self._signal = GPIO.input(pir_sensor)
-        if self._signal:
-        else:
         self._callback(self._signal)
 
     def getState(self):
