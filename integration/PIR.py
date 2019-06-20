@@ -2,19 +2,21 @@ import RPi.GPIO as GPIO
 
 
 class PIR:
-    pir_sensor = 11
-    GPIO.setmode(GPIO.BOARD)
-    GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
+
 
     def __init__(self, callback):
         self._signal = 0
         self._callback = callback
+        self._pir_sensor = 11
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self._pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
+        GPIO.add_event_detect(self._pir_sensor, GPIO.BOTH, callback=self.motion)
 
     def main(self):
         pass
 
-    def motion(self, pir_sensor):
-        self._signal = GPIO.input(pir_sensor)
+    def motion(self):
+        self._signal = GPIO.input(self._pir_sensor)
         if self._signal:
             print("motion!")
         else:
@@ -24,4 +26,4 @@ class PIR:
     def getState(self):
         return self._signal
 
-    GPIO.add_event_detect(pir_sensor, GPIO.BOTH, callback=motion)
+
