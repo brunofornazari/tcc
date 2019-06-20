@@ -15,12 +15,10 @@ class PIR:
     def main(self):
         pass
 
-    def motion(self, SIGNAL):
-        self._signal = GPIO.input(self._pir_sensor)
+    def motion(self, pir_sensor):
+        self._signal = GPIO.input(pir_sensor)
         if self._signal:
-            print("motion!")
         else:
-            print("no motion")
         self._callback(self._signal)
 
     def getState(self):
