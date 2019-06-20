@@ -1,7 +1,7 @@
-import integration.PIR as PIR
+from integration.PIR import PIR
 
 def tryPIR(signal):
     print('we gotta a', signal)
 
-_PIR = PIR()
+_PIR = PIR(tryPIR)
 
