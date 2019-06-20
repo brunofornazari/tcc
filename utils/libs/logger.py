@@ -1,12 +1,8 @@
 import sys
-
-import utils.libs.messageHUB as messageHUB
-from server import socketio
-from flask_socketio import emit
+from server import messageHUB
 
 def log(sMessage) :
     print(sMessage)
-    emit('message', sMessage)
     messageHUB.addMessage(sMessage)
 
 def logStatus(sMessage, iCurrent, iMax) :

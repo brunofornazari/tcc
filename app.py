@@ -3,7 +3,8 @@ import time
 
 import facialRecognition.deteccao_captura as detector
 import speech_module.speechRecognition as speech
-
+import utils.libs.logger as logger
+import utils.libs.db as db
 
 if os.environ['ENVTYPE'] != 'DEV' : import integration.PIR as PIR
 
@@ -35,5 +36,5 @@ def main() :
 
                 #TODO: trabalhar as possibilidades e libs integradas pelo responseValue
         else :
-            #logger.log('nenhum usuário detectado')
+            logger.log('nenhum usuário detectado')
             time.sleep(5)
