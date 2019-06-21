@@ -27,6 +27,7 @@ def getUserFromCamera() :
     while userId == 0 :
         frame = vs.read()
         frame = imutils.resize(frame, width=400)
+        cv2.imgshow("Frame", frame)
         facesDetectadas = detectorFace(frame, 2)
         for face in facesDetectadas :
             e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
