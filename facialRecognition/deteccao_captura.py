@@ -37,8 +37,8 @@ def getUserFromCamera() :
             facesDetectadas = detectorFace(frame, 2)
             for face in facesDetectadas :
                 e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
-                pontosFaciais = detectorPontos(imagem, face)
-                descritorFacial = reconhecimentoFacial.compute_face_descriptor(imagem, pontosFaciais)
+                pontosFaciais = detectorPontos(frame, face)
+                descritorFacial = reconhecimentoFacial.compute_face_descriptor(frame, pontosFaciais)
 
                 listaDescritorFacial = [fd for fd in descritorFacial]
                 npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
