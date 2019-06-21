@@ -6,7 +6,8 @@ import cv2
 import numpy as np
 import imutils
 import utils.libs.logger as logger
-from imutils.video.pivideostream import PiVideoStream
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 
 def main() :
     pass
@@ -19,41 +20,46 @@ def getUserFromCamera() :
     indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
-    vs = PiVideoStream().start()
+    camera = PiCamera()
+    camera.resolution = (320, 240)
+    camera.framerate = 32
+    rawCapture = PiRGBArray(camera, size=(320, 240))
+    stream = camera.capture_continuous(rawCapture, format="bgr",
+                                       use_video_port=True)
     userId = 0
 
     logger.log('Detectando usuário...')
 
     while userId == 0 :
-        frame = vs.read()
-        frame = imutils.resize(frame, width=400)
-        cv2.imgshow("Frame", frame)
-        facesDetectadas = detectorFace(frame, 2)
-        for face in facesDetectadas :
-            e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
-            pontosFaciais = detectorPontos(imagem, face)
-            descritorFacial = reconhecimentoFacial.compute_face_descriptor(imagem, pontosFaciais)
+        for (i, f) in enumerate(stream):
+            frame = f.array
+            frame = imutils.resize(frame, width=400)
+            facesDetectadas = detectorFace(frame, 2)
+            for face in facesDetectadas :
+                e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
+                pontosFaciais = detectorPontos(imagem, face)
+                descritorFacial = reconhecimentoFacial.compute_face_descriptor(imagem, pontosFaciais)
 
-            listaDescritorFacial = [fd for fd in descritorFacial]
-            npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
-            npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
+                listaDescritorFacial = [fd for fd in descritorFacial]
+                npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
+                npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
 
-            distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
-            minimo = np.argmin(distancias)
-            distanciaMinima = distancias[minimo]
+                distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
+                minimo = np.argmin(distancias)
+                distanciaMinima = distancias[minimo]
 
-            if distanciaMinima <= limiar :
-                if os.environ['ENVTYPE'] == 'DEV' :
-                    nome = os.path.split(indices[minimo])[1].split(".")[0]
+                if distanciaMinima <= limiar :
+                    if os.environ['ENVTYPE'] == 'DEV' :
+                        nome = os.path.split(indices[minimo])[1].split(".")[0]
+                    else :
+                        nome = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
+                    userId = nome
+                    logger.log('Usuário detectado')
+                    rawCapture.truncate(0)
                 else :
-                    nome = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
-                userId = nome
-                logger.log('Usuário detectado')
-                vs.stop()
-            else :
-                nome = "unknown"
-                vs.stop()
-
+                    nome = "unknown"
+                    rawCapture.truncate(0)
+            rawCapture.truncate(0)
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
         if cv2.waitKey(1) == ord('q'):
             break
