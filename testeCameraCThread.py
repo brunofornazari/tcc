@@ -17,7 +17,6 @@ ap.add_argument("-n", "--num-frames", type=int, default=100,
 ap.add_argument("-d", "--display", type=int, default=-1,
                 help="Whether or not frames should be displayed")
 args = vars(ap.parse_args())
-
 # created a *threaded *video stream, allow the camera sensor to warmup,
 # and start the FPS counter
 print("[INFO] sampling THREADED frames from `picamera` module...")
