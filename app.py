@@ -11,7 +11,7 @@ def main() :
 
 def mirror(bSensorCapture):
 
-    if bSensorCapture is True:
+    if bSensorCapture:
         print('aqui ok')
         userId = detector.getUserFromCamera()
         user = db.getUserData(userId)
