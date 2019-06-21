@@ -29,6 +29,7 @@ while fps._numFrames < args["num_frames"]:
     # grab the frame from the threaded video stream and resize it
     # to have a maximum width of 400 pixels
     frame = vs.read()
+    print('frame', frame)
     frame = imutils.resize(frame, width=400)
 
     # check to see if the frame should be displayed to our screen
