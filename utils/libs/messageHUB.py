@@ -13,7 +13,6 @@ class MessageHUB:
 
     def addMessage(self, sMessage):
         self._messageHUB = sMessage
-        print('enviando')
         for callback in self._observers:
             callback(self._messageHUB)
 

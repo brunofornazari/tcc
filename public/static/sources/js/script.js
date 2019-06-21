@@ -5,9 +5,6 @@ $(document).ready(function(){
    socket.on('connect', function(){
         socket.send('User has connected!');
    });
-    /*setInterval(function(){
-        socket.emit('message');
-    }, 1000);*/
    socket.on('message', function(msg){
         if(msg !== '' && msg.length !== 0){
             $('#messages').html(msg);
