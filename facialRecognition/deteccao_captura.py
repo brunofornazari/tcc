@@ -49,7 +49,7 @@ def getUserFromCamera() :
                 distanciaMinima = distancias[minimo]
 
                 if distanciaMinima <= limiar :
-                    if os.environ['ENVTYPE'] == 'DEV' :
+                    if os.environ.get('ENVTYPE') == 'DEV' :
                         nome = os.path.split(indices[minimo])[1].split(".")[0]
                     else :
                         nome = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
