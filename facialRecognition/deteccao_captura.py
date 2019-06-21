@@ -19,7 +19,7 @@ def getUserFromCamera() :
     indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
-    #cam = cv2.VideoCapture(0)
+    vs = PiVideoStream().start()
     userId = 0
 
     logger.log('Detectando usuário...')
