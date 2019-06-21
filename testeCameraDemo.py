@@ -18,7 +18,7 @@ camera = PiCamera()
 camera.resolution = (320, 240)
 camera.framerate = 32
 rawCapture = PiRGBArray(camera, size=(320, 240))
-stream = camera.capture_continuous(rawCapture, format="bgr", use_video_port=True)
+stream = camera.capture_continuous(rawCapture, format="bgr", use_video_port=False)
 
 # created a *threaded *video stream, allow the camera sensor to warmup,
 # and start the FPS counter
