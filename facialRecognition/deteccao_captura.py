@@ -4,11 +4,13 @@ import _pickle as cPickle
 import dlib
 import cv2
 import numpy as np
-
+import imutils
 import utils.libs.logger as logger
+from imutils.video.pivideostream import PiVideoStream
 
 def main() :
     pass
+
 
 def getUserFromCamera() :
     detectorFace = dlib.get_frontal_face_detector()
@@ -17,14 +19,15 @@ def getUserFromCamera() :
     indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
-    cam = cv2.VideoCapture(0)
+    #cam = cv2.VideoCapture(0)
     userId = 0
 
     logger.log('Detectando usuário...')
 
     while userId == 0 :
-        ret, imagem = cam.read()
-        facesDetectadas = detectorFace(imagem, 2)
+        frame = vs.read()
+        frame = imutils.resize(frame, width=400)
+        facesDetectadas = detectorFace(frame, 2)
         for face in facesDetectadas :
             e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
             pontosFaciais = detectorPontos(imagem, face)
@@ -55,6 +58,7 @@ def getUserFromCamera() :
     cv2.destroyAllWindows()
 
     return userId
+
 
 if __name__ == '__main__' :
     main()
