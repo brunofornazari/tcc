@@ -15,18 +15,19 @@ def captureNewFace(sName) :
 
     while True :
         for img in enumerate(stream):
-            faces = detectorFace(img, 1)
+            if sampleNumber < 10:
+                faces = detectorFace(img, 1)
 
-            for face in faces :
-                sampleNumber = sampleNumber+1
-                e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
-                cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", img)
-                cv2.rectangle(img, (e, t), (d, b), (0, 255, 255), 2)
-                cv2.waitKey(100)
-            logger.log('Imagem ' + str(sampleNumber) + ' gravada')
-            if sampleNumber > 10 :
+                for face in faces :
+                    sampleNumber = sampleNumber+1
+                    e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
+                    cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", img)
+                    cv2.rectangle(img, (e, t), (d, b), (0, 255, 255), 2)
+                    cv2.waitKey(100)
+                logger.log('Imagem ' + str(sampleNumber) + ' gravada')
+                if sampleNumber > 10 :
+                    break
+            else :
                 break
-    cam.release()
-    cv2.destroyAllWindows()
-
+    camera.stop()
     db.insertNewUser(iId, sName)
