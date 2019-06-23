@@ -49,16 +49,17 @@ def getUserFromCamera() :
                 distanciaMinima = distancias[minimo]
 
                 if distanciaMinima <= limiar :
+                    print('Face identificada')
                     if os.environ.get('ENVTYPE') == 'DEV' :
                         nome = os.path.split(indices[minimo])[1].split(".")[0]
                     else :
                         nome = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
-                    userId = nome
                     logger.log('Usuário detectado')
                     rawCapture.truncate(0)
                 else :
-                    nome = "unknown"
+                    nome = "Visitante"
                     rawCapture.truncate(0)
+                userId = nome
             rawCapture.truncate(0)
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
         if cv2.waitKey(1) == ord('q'):
