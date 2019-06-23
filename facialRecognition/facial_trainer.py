@@ -14,7 +14,7 @@ def startTraining() :
 
     indice = {}
     idx = 0
-    descritoresFaciais = None
+    descritoresFaciais = np.load('resources/descritores_captura.npy')
     arquivos = glob.glob(os.path.join("dataset/", "*.jpg"))
 
     logger.log('Inicializando processo de atualização do banco de imagens...')
@@ -25,10 +25,10 @@ def startTraining() :
         facesDetectadas = detectorFace(imagem, 1)
         numeroFacesDetectadas = len(facesDetectadas)
         if numeroFacesDetectadas > 1 :
-            print("Há mais de uma face na imagem {}".format(arquivo))
+            logger.logError("Há mais de uma face na imagem {}".format(arquivo))
             exit(0)
         elif numeroFacesDetectadas < 1 :
-            print("Nenhuma face encontrada no arquivo {}".format(arquivo))
+            logger.logError("Nenhuma face encontrada no arquivo {}".format(arquivo))
             exit(0)
 
         for face in facesDetectadas :
@@ -49,12 +49,8 @@ def startTraining() :
             indice[idx] = arquivo
             idx += 1
 
-        #cv2.imshow("Treinamento", imagem)
-        #cv2.waitKey(0)
-
-    #cv2.destroyAllWindows()
     np.save("resources/descritores_captura.npy", descritoresFaciais)
     with open("resources/indices_captura.pickle", 'wb') as f :
         cPickle.dump(indice, f)
 
-    logger.log('\nProcesso de atualização do banco de imagens finalizado com sucesso!');
+    logger.log('Processo de atualização do banco de imagens finalizado com sucesso!');
