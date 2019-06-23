@@ -66,6 +66,8 @@ def getUserFromCamera() :
                 if userId != 0:
                     break
             rawCapture.truncate(0)
+        if(userId != 0):
+            break
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
         if cv2.waitKey(1) == ord('q'):
             break
