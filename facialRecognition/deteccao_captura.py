@@ -69,6 +69,7 @@ def getUserFromCamera() :
                     print('will break')
                     break
             rawCapture.truncate(0)
+        print('userId', userId)
         if(userId != 0):
             print('will break outter for-loop')
             break
