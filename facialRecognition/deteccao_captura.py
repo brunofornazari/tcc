@@ -18,8 +18,8 @@ def getUserFromCamera() :
     indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
-
-    stream = Camera().capture()
+    camera = Camera()
+    stream = camera.capture()
     userId = -1
 
     logger.log('Detectando usuário...')
@@ -49,13 +49,13 @@ def getUserFromCamera() :
                     else :
                         userId = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
                     logger.log('Usuário detectado')
-                    rawCapture.truncate(0)
                 else :
                     userId = 'Visitante'
-                    rawCapture.truncate(0)
+
+                camera.stop()
                 if userId != 0:
                     break
-            rawCapture.truncate(0)
+            camera.stop()
             if(userId != 0):
                 break
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado

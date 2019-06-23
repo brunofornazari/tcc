@@ -13,3 +13,6 @@ class Camera:
     def capture(self):
         return self.camera.capture_continuous(self.rawCapture, format="bgr",
                                        use_video_port=True)
+
+    def stop(self):
+        self.rawCapture.truncate(0)
