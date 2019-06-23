@@ -58,12 +58,13 @@ def getUserFromCamera() :
 
                     else :
                         userId = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
+                        logger.log('userId', userId)
                     logger.log('Usuário detectado')
                     rawCapture.truncate(0)
                 else :
                     userId = 'Visitante'
                     rawCapture.truncate(0)
-
+                logger.log('userId', userId)
                 if userId != 0:
                     break
             rawCapture.truncate(0)
