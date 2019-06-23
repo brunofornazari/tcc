@@ -31,11 +31,14 @@ def getUserFromCamera() :
     logger.log('Detectando usuário...')
 
     while userId == 0 :
+        print('iniciando fluxo')
         for (i, f) in enumerate(stream):
+            print('iniciando fluxo de camera')
             frame = f.array
             frame = imutils.resize(frame, width=400)
             facesDetectadas = detectorFace(frame, 2)
             for face in facesDetectadas :
+                print('reconhecendo pontos faciais')
                 e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
                 pontosFaciais = detectorPontos(frame, face)
                 descritorFacial = reconhecimentoFacial.compute_face_descriptor(frame, pontosFaciais)
@@ -57,10 +60,10 @@ def getUserFromCamera() :
                     logger.log('Usuário detectado')
                     rawCapture.truncate(0)
                 else :
-                    nome = "Visitante"
+                    nome = 0
                     rawCapture.truncate(0)
                 userId = nome
-                if userId :
+                if userId != 0:
                     break
             rawCapture.truncate(0)
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
@@ -68,7 +71,7 @@ def getUserFromCamera() :
             break
 
     cv2.destroyAllWindows()
-
+    print('returning')
     return userId
 
 
