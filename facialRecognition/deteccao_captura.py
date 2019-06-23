@@ -1,13 +1,11 @@
 import os
-import glob
-import _pickle as cPickle
 import dlib
 import cv2
 import numpy as np
 import imutils
 import utils.libs.logger as logger
-from picamera.array import PiRGBArray
-from picamera import PiCamera
+from integration.camera import Camera
+
 
 def main() :
     pass
@@ -20,25 +18,18 @@ def getUserFromCamera() :
     indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
-    camera = PiCamera()
-    camera.resolution = (320, 240)
-    camera.framerate = 32
-    rawCapture = PiRGBArray(camera, size=(320, 240))
-    stream = camera.capture_continuous(rawCapture, format="bgr",
-                                       use_video_port=True)
-    userId = 0
+
+    stream = Camera().capture()
+    userId = -1
 
     logger.log('Detectando usuário...')
 
-    while userId == 0 :
-        print('iniciando fluxo')
+    while userId == -1 :
         for (i, f) in enumerate(stream):
-            print('iniciando fluxo de camera')
             frame = f.array
             frame = imutils.resize(frame, width=400)
             facesDetectadas = detectorFace(frame, 2)
             for face in facesDetectadas :
-                print('reconhecendo pontos faciais')
                 e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
                 pontosFaciais = detectorPontos(frame, face)
                 descritorFacial = reconhecimentoFacial.compute_face_descriptor(frame, pontosFaciais)
@@ -52,26 +43,20 @@ def getUserFromCamera() :
                 distanciaMinima = distancias[minimo]
 
                 if distanciaMinima <= limiar :
-                    print('Face identificada')
                     if os.environ.get('ENVTYPE') == 'DEV' :
                         userId = os.path.split(indices[minimo])[1].split(".")[0]
 
                     else :
                         userId = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
-                        print('userId', userId)
                     logger.log('Usuário detectado')
                     rawCapture.truncate(0)
                 else :
                     userId = 'Visitante'
                     rawCapture.truncate(0)
-                print('userId', userId)
                 if userId != 0:
-                    print('will break')
                     break
             rawCapture.truncate(0)
-            print('userId', userId)
             if(userId != 0):
-                print('will break outter for-loop')
                 break
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
         if cv2.waitKey(1) == ord('q'):
