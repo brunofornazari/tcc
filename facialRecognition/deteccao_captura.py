@@ -60,7 +60,7 @@ def getUserFromCamera() :
                     logger.log('Usuário detectado')
                     rawCapture.truncate(0)
                 else :
-                    nome = 0
+                    nome = 'Visitante'
                     rawCapture.truncate(0)
                 userId = nome
                 if userId != 0:
