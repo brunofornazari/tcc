@@ -69,10 +69,10 @@ def getUserFromCamera() :
                     print('will break')
                     break
             rawCapture.truncate(0)
-        print('userId', userId)
-        if(userId != 0):
-            print('will break outter for-loop')
-            break
+            print('userId', userId)
+            if(userId != 0):
+                print('will break outter for-loop')
+                break
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
         if cv2.waitKey(1) == ord('q'):
             break
