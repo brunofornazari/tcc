@@ -54,15 +54,16 @@ def getUserFromCamera() :
                 if distanciaMinima <= limiar :
                     print('Face identificada')
                     if os.environ.get('ENVTYPE') == 'DEV' :
-                        nome = os.path.split(indices[minimo])[1].split(".")[0]
+                        userId = os.path.split(indices[minimo])[1].split(".")[0]
+
                     else :
-                        nome = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
+                        userId = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
                     logger.log('Usuário detectado')
                     rawCapture.truncate(0)
                 else :
-                    nome = 'Visitante'
+                    userId = 'Visitante'
                     rawCapture.truncate(0)
-                userId = nome
+
                 if userId != 0:
                     break
             rawCapture.truncate(0)
