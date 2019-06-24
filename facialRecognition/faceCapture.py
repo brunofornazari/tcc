@@ -17,7 +17,7 @@ def captureNewFace(sName) :
 
     for (i, img) in enumerate(stream):
         frame = img.array
-        #frame = imutils.resize(frame, width=320)
+        frame = imutils.resize(frame, width=320)
         if sampleNumber < 10:
             faces = detectorFace(frame, 1)
 
