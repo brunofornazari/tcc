@@ -2,9 +2,10 @@ import cv2
 import numpy as np
 import dlib
 import utils.libs.db as db
-
+import imutils
 import utils.libs.logger as logger
 from integration.camera import Camera
+
 
 def captureNewFace(sName) :
     detectorFace = dlib.get_frontal_face_detector()
@@ -14,9 +15,11 @@ def captureNewFace(sName) :
     sampleNumber = 0
 
     while True :
-        for img in enumerate(stream):
+        for (i, img) in enumerate(stream):
+            frame = img.array
+            frame = imutils.resize(frame, width=400)
             if sampleNumber < 10:
-                faces = detectorFace(img, 1)
+                faces = detectorFace(frame, 1)
 
                 for face in faces :
                     sampleNumber = sampleNumber+1
