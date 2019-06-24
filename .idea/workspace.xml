@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6861a69-fdb4-4093-9e77-be562d1f3b20" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/templates/createUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/facialRecognition/faceCapture.py" beforeDir="false" afterPath="$PROJECT_DIR$/facialRecognition/faceCapture.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,11 +52,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/facialRecognition/faceCapture.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="29" column="92" selection-start-line="29" selection-start-column="92" selection-end-line="29" selection-end-column="92" />
+            <state relative-caret-position="170">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/templates/createUser.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -117,8 +141,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -160,7 +184,6 @@
         <option value="$PROJECT_DIR$/public/static/sources/css/style.css" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/utils/libs/logger.py" />
-        <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/public/templates/index.html" />
         <option value="$PROJECT_DIR$/testePIR.py" />
         <option value="$PROJECT_DIR$/integration/PIR.py" />
@@ -176,6 +199,8 @@
         <option value="$PROJECT_DIR$/facialRecognition/facial_trainer.py" />
         <option value="$PROJECT_DIR$/testeRecogFacial.py" />
         <option value="$PROJECT_DIR$/testeCreateUser.py" />
+        <option value="$PROJECT_DIR$/server.py" />
+        <option value="$PROJECT_DIR$/public/templates/createUser.html" />
         <option value="$PROJECT_DIR$/facialRecognition/faceCapture.py" />
       </list>
     </option>
@@ -203,17 +228,13 @@
             <path>
               <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="facialRecognition" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="integration" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -451,7 +472,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -462,7 +483,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32956153" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49683878" visible="true" weight="0.36403033" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49683878" visible="true" weight="0.36403033" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50316125" side_tool="true" visible="true" weight="0.36403033" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -530,13 +551,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="98" lean-forward="true" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/integration/PIR.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -557,16 +571,6 @@
           <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -705,10 +709,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="98" lean-forward="true" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/templates/createUser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/facialRecognition/faceCapture.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="29" column="92" selection-start-line="29" selection-start-column="92" selection-end-line="29" selection-end-column="92" />
+        <state relative-caret-position="170">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

@@ -16,6 +16,11 @@ def mainPage():
     return render_template('index.html')
 
 
+@app.route('/newUser')
+def createuser():
+    return render_template('createUser.html')
+
+
 @socketio.on('connect')
 def handle_connect():
     clients.append(request.sid)
