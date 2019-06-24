@@ -28,9 +28,10 @@ def captureNewFace(sName) :
                 cv2.rectangle(frame, (e, t), (d, b), (0, 255, 255), 2)
                 cv2.waitKey(100)
             logger.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
+            cam.stop()
             if sampleNumber > 10 :
                 break
         else :
             break
-    cam.stop()
+
     db.insertNewUser(iId, sName)
