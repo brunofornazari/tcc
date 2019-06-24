@@ -14,23 +14,23 @@ def captureNewFace(sName) :
     iId = db.getNextId()
     sampleNumber = 0
 
-    while True :
-        for (i, img) in enumerate(stream):
-            frame = img.array
-            #frame = imutils.resize(frame, width=320)
-            if sampleNumber < 10:
-                faces = detectorFace(frame, 1)
 
-                for face in faces :
-                    sampleNumber = sampleNumber+1
-                    e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
-                    cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", img)
-                    cv2.rectangle(img, (e, t), (d, b), (0, 255, 255), 2)
-                    cv2.waitKey(100)
-                logger.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
-                if sampleNumber > 10 :
-                    break
-            else :
+    for (i, img) in enumerate(stream):
+        frame = img.array
+        #frame = imutils.resize(frame, width=320)
+        if sampleNumber < 10:
+            faces = detectorFace(frame, 1)
+
+            for face in faces :
+                sampleNumber = sampleNumber+1
+                e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
+                cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", img)
+                cv2.rectangle(img, (e, t), (d, b), (0, 255, 255), 2)
+                cv2.waitKey(100)
+            logger.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
+            if sampleNumber > 10 :
                 break
-    camera.stop()
+        else :
+            break
+    cam.stop()
     db.insertNewUser(iId, sName)
