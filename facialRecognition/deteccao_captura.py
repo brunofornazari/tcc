@@ -47,6 +47,7 @@ def getUserFromCamera() :
                         userId = os.path.split(indices[minimo])[1].split(".")[0]
 
                     else :
+                        print('indice', indices[minimo])
                         userId = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
                     logger.log('Usuário detectado')
                 else :
