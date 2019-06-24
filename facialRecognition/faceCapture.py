@@ -24,8 +24,8 @@ def captureNewFace(sName) :
             for face in faces :
                 sampleNumber = sampleNumber+1
                 e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
-                cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", img)
-                cv2.rectangle(img, (e, t), (d, b), (0, 255, 255), 2)
+                cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", frame)
+                cv2.rectangle(frame, (e, t), (d, b), (0, 255, 255), 2)
                 cv2.waitKey(100)
             logger.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
             if sampleNumber > 10 :
