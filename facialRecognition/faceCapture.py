@@ -27,7 +27,7 @@ def captureNewFace(sName) :
                     cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", img)
                     cv2.rectangle(img, (e, t), (d, b), (0, 255, 255), 2)
                     cv2.waitKey(100)
-                logger.log('Imagem ' + str(sampleNumber) + ' gravada')
+                logger.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
                 if sampleNumber > 10 :
                     break
             else :
