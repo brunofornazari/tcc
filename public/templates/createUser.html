@@ -10,10 +10,14 @@
 </head>
 <body>
     <script type="text/javascript" src="{{ url_for('static', filename='sources/js/script.js') }}"></script>
+    <h1>Cadastrar Usuário</h1>
     <div id="messages" class="messageContainer"></div>
     <div class="createUser-form">
         <label for="nome">Nome</label>
-        <input id="nome" />
+        <div class="input-container">
+            <input id="nome" />
+        </div>
+        <button>Iniciar Cadastramento</button>
     </div>
 </body>
 </html>
