@@ -1,14 +1,13 @@
 import speech_module.speechRecognition as srlib
 import utils.libs.logger as logger
 
+
 def main():
-    response = srlib.startRecognizing()
-    if response == 0 :
-        exit()
-    else :
-        responseIntents = response['entities']['intent']
-        # TODO: trabalhar os intents pela confiabilidade
-        logger.log('evento concluído, intent recebida: {}'.format(responseIntents))
+    srlib.wait_command(exibe_dados)
+
+
+def exibe_dados(intent, confidence):
+    logger.log('intenção {} com {}% de confiança de estar correto!'.format(intent, confidence*100))
 
 
 if __name__ == '__main__' :
