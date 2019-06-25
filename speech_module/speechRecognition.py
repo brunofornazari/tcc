@@ -33,15 +33,15 @@ def get_intention(response):
         return '', 0
 
 
-def wait_command(callback):
+def wait_command(keep_execution, callback):
 
-    while True:
+    while keep_execution:
         response = startRecognizing()
         intention, confidence = get_intention(response)
         if confidence > 0.9:
             if intention == 'start_command':
                 keep_listening = 1
-                while keep_listening == 1:
+                while keep_listening == 1 and keep_execution == 1:
                     logger.log('O que posso fazer por você?')
                     command = startRecognizing()
                     com_intention, com_confidence = get_intention(command)
@@ -53,4 +53,3 @@ def wait_command(callback):
                         logger.log('Até mais!')
                     else:
                         logger.log('Não entendi o que quis dizer, poderia repetir?')
-
