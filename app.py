@@ -7,11 +7,27 @@ import utils.libs.db as db
 import utils.config.constants as constants
 import pyowm
 from datetime import datetime, timedelta
+from newsapi import NewsApiClient
 if os.environ.get('ENVTYPE') != 'DEV' : from integration.PIR import PIR
 
 
 owm = pyowm.OWM(constants.PYOWM_KEY)
+news_intents = {
+    'noticias_politica' : {
+        'query' : 'politica'
+    },
+    'noticias_esportes' : {
+        'category' : 'sports'
+    },
+    'noticias_economia' : {
+        'category' : 'business'
+    },
+    'noticias_gerais' : {
+        'category' : 'general'
+    }
+}
 
+newsapi = NewsApiClient(api_key=constants.NEWS_KEY)
 
 def main() :
     PIR(mirror)
@@ -45,6 +61,7 @@ def mirror(bSensorCapture):
 
 
 def call_intent(intent):
+
     if intent['intent']['value'] == 'previsao_tempo':
         if check_attribute(intent, 'location'):
             where = intent['location']['value']
@@ -63,7 +80,29 @@ def call_intent(intent):
         temperature = weather.get_temperature('celsius')
 
         logger.log('A previsão do tempo para o dia {}/{}/{} é de: <br> Min: {}ºC e Max: {} ºC'.format(when.day, when.month, when.year, temperature['temp_min'], temperature['temp_max']))
+    elif intent['intent']['value'] in news_intents :
+        intention = intent['intent']['value']
+        result = ''
 
+        if check_attribute(news_intents[intention], 'query') :
+            query = news_intents[intention]['query']
+        else :
+            query = ''
+
+        if check_attribute(news_intents[intention], 'category') :
+            category = news_intents[intention]['category']
+        else :
+            category = 'general'
+
+        top_headlines = newsapi.get_top_headlines(
+                                                  q=query,
+                                                  category=category,
+                                                  language='pt',
+                                                  page_size=5,
+                                                  country='br')
+        for content in top_headlines:
+            result += '<div><h3>{}</h3><p>{}</p></div>'.format(content['title'], content['content'])
+        logger.log(result)
     else:
         logger.log('Essa ação não está disponível no momento :/')
 
