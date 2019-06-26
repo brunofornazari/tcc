@@ -1,4 +1,5 @@
 import os
+import random
 
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
@@ -6,7 +7,7 @@ from utils.libs.messageHUB import MessageHUB
 
 dir_path = os.path.dirname(os.path.realpath(__file__)) + '/public'
 app = Flask(__name__, root_path=dir_path)
-app.config['SECRET_KEY'] = 'SOME_KEY'
+app.config['SECRET_KEY'] = random.getrandbits(128)
 socketio = SocketIO(app)
 clients = []
 

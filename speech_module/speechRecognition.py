@@ -33,6 +33,16 @@ def get_intention(response):
         return '', 0
 
 
+def get_values(response):
+    if response is not None and response['entities'] and response['entities']:
+        intents = response['entities']
+        result = {}
+        for intent in intents:
+            result[intent] = {"value" : intents[intent][0]['value'], "confidence" : intents[intent][0]['confidence']}
+
+    return result
+
+
 def wait_command(keep_execution, callback):
 
     while keep_execution:
@@ -44,11 +54,12 @@ def wait_command(keep_execution, callback):
                 while keep_listening == 1 and keep_execution == 1:
                     logger.log('O que posso fazer por você?')
                     command = startRecognizing()
-                    com_intention, com_confidence = get_intention(command)
-                    if com_confidence > 0.9 and com_intention != 'stop_command':
+                    command_result = get_values(command)
+                    command_result_intention = command_result['intent']
+                    if command_result_intention['confidence'] > 0.9 and command_result_intention['value'] != 'stop_command':
                         keep_listening = 0
-                        callback(com_intention, com_confidence)
-                    elif com_confidence > 0.9 and com_intention == 'stop_command':
+                        callback(command_result)
+                    elif command_result_intention['confidence'] > 0.9 and command_result_intention['value'] == 'stop_command':
                         keep_listening = 0
                         logger.log('Até mais!')
                     else:
