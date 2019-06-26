@@ -7,7 +7,7 @@ html, body{
     font-size: 1vh;
 }
 
-input, label, button{
+input, label, button, p{
     border: none;
     background-color: transparent;
     color : #FFF;
@@ -41,3 +41,18 @@ button:focus, input:focus {
     padding: 0.5vw 1vw;
 }
 
+.news-content{
+    width : 100%;
+}
+
+.news-content div{
+    float:left;
+}
+
+.news-content div:first-child{
+    margin-right : 1vh;
+}
+
+.break{
+    clear : both;
+}

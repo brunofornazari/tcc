@@ -101,7 +101,7 @@ def call_intent(intent):
                                                   page_size=5,
                                                   country='br')
         for content in top_headlines:
-            result += '<div><h3>{}</h3><p>{}</p></div>'.format(content['title'], content['content'])
+            result += '<div class="news-content"><div><img src="{}" /></div><div><h1>{}</h1><p>{}</p></div><div class="break"></div></div>'.format(content['title'], content['content'])
         logger.log(result)
     else:
         logger.log('Essa ação não está disponível no momento :/')
