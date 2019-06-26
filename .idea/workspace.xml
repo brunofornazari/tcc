@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6861a69-fdb4-4093-9e77-be562d1f3b20" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/speech_module/speechRecognition.py" beforeDir="false" afterPath="$PROJECT_DIR$/speech_module/speechRecognition.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trainPNL.py" beforeDir="false" afterPath="$PROJECT_DIR$/trainPNL.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/config/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/config/constants.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,18 +36,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="9" column="51" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="51" />
-              <folding>
-                <element signature="e#0#16#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/facialRecognition/faceCapture.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
@@ -65,7 +50,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
+            <state relative-caret-position="-255">
               <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -107,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trainPNL.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="38" column="160" selection-start-line="38" selection-start-column="160" selection-end-line="38" selection-end-column="160" />
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="51" />
               <folding>
                 <element signature="e#0#47#0" expanded="true" />
               </folding>
@@ -119,14 +104,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="42" column="96" selection-start-line="42" selection-start-column="96" selection-end-line="42" selection-end-column="96" />
+            <state relative-caret-position="75">
+              <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/utils/config/constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="9" selection-start-line="2" selection-end-line="2" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -191,7 +185,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/speech_recognition/speechRecognition.py" />
-        <option value="$PROJECT_DIR$/utils/config/constants.py" />
         <option value="$PROJECT_DIR$/utils/messageHUB.py" />
         <option value="$PROJECT_DIR$/public/static/sources/client-socketio.js" />
         <option value="$PROJECT_DIR$/public/static/sources/jquery.js" />
@@ -217,8 +210,9 @@
         <option value="$PROJECT_DIR$/integration/recogniser.py" />
         <option value="$PROJECT_DIR$/speech_module/speechRecognition.py" />
         <option value="$PROJECT_DIR$/server.py" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/trainPNL.py" />
+        <option value="$PROJECT_DIR$/utils/config/constants.py" />
+        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -256,6 +250,17 @@
               <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="speech_module" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -493,7 +498,7 @@
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -504,7 +509,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32956153" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49578503" visible="true" weight="0.46153846" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49578503" visible="true" weight="0.46153846" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50421494" side_tool="true" visible="true" weight="0.46153846" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32936078" />
       <window_info anchor="bottom" id="Messages" order="11" />
@@ -523,13 +528,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/facialRecognition/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/config/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/libs/db.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -740,18 +738,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="-255">
           <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="42" column="96" selection-start-line="42" selection-start-column="96" selection-end-line="42" selection-end-column="96" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -760,10 +748,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trainPNL.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="38" column="160" selection-start-line="38" selection-start-column="160" selection-end-line="38" selection-end-column="160" />
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="51" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/config/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="9" selection-start-line="2" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
