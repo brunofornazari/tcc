@@ -12,6 +12,8 @@ Para usar o modulo, lembrar dos requisitos mínimos:
 - Pickle
 - speech_recognition
 - flask-socketio
+- pyowm
+- newsapi-python
 
 Se possível, usar um env do python exclusivo para o projeto afim de evitar conflitos.
 Para iniciar o programa principal numa máquina windows, lembrar de settar a variável de ambiente ENVTYPE=DEV
