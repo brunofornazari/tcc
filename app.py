@@ -31,8 +31,11 @@ news_intents = {
 newsapi = NewsApiClient(api_key=constants.NEWS_KEY)
 
 def main() :
-    PIR(mirror)
-    #mirror(1)
+    try:
+        PIR(mirror)
+        #mirror(1)
+    except:
+        logger.logError('Algo saiu errado, tente novamente mais tarde')
 
 
 def mirror(bSensorCapture):
@@ -68,7 +71,7 @@ def mirror(bSensorCapture):
 def call_intent(intent):
 
     if intent['intent']['value'] == 'previsao_tempo':
-        templateHTML = codecs.open('public/templates/previsaoTemplate.html')
+        templateHTML = codecs.open('public/templates/previsaoTemplate.html').read()
         if check_attribute(intent, 'location'):
             where = intent['location']['value']
         else:
@@ -89,8 +92,8 @@ def call_intent(intent):
     elif intent['intent']['value'] in news_intents :
         intention = intent['intent']['value']
         result = ''
-        templateHTML = f.open('public/templates/noticiasHeader.html').read()
-        templateItem = f.open('public/templates/noticiasItem.html').read()
+        templateHTML = codecs.open('public/templates/noticiasHeader.html').read()
+        templateItem = codecs.open('public/templates/noticiasItem.html').read()
 
         if check_attribute(news_intents[intention], 'query') :
             query = news_intents[intention]['query']
@@ -106,12 +109,12 @@ def call_intent(intent):
                                                   q=query,
                                                   category=category,
                                                   language='pt',
-                                                  page_size=5,
+                                                  page_size=3,
                                                   country='br')
         for content in top_headlines['articles']:
             news_content = content['content']
-            if len(news_content) > 200:
-                slice_item = slice(0, 200)
+            if len(news_content) > 60:
+                slice_item = slice(0, 60)
                 news_content = news_content[slice_item]
                 news_content += '...'
             result += templateItem.format(content['urlToImage'], content['title'], news_content)

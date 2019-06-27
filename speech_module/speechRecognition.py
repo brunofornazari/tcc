@@ -23,10 +23,12 @@ def startRecognizing():
     except RuntimeError:
         logger.logError('Algo saiu errado')
         return 2
-
+    except:
+        logger.logError('Algo saiu errado, tente novamente mais tarde')
+        return 2
 
 def get_intention(response):
-    if response is not None and response['entities'] and response['entities']['intent']:
+    if response is not None and util.check_attribute(response, 'entities') and util.check_attribute(response['entities'], 'intent'):
         intents = response['entities']['intent']
         for intent in intents:
             return intent['value'], intent['confidence']
@@ -49,6 +51,7 @@ def wait_command(keep_execution, callback):
 
     while keep_execution:
         response = startRecognizing()
+        logger.log('Processando...')
         intention, confidence = get_intention(response)
         if confidence > 0.9:
             if intention == 'start_command':
@@ -57,14 +60,13 @@ def wait_command(keep_execution, callback):
                     logger.log('O que posso fazer por você?')
                     command = startRecognizing()
                     command_result = get_values(command)
-                    print(command_result)
                     if util.check_attribute(command_result, 'intent') == True:
                         command_result_intention = command_result['intent']
                     else :
                         logger.log('Não entendi o que quis dizer, poderia repetir?')
                         pass
 
-                    if command_result_intention['confidence'] > 0.6 and command_result_intention['value'] != 'stop_command':
+                    if command_result_intention['confidence'] > 0.7 and command_result_intention['value'] != 'stop_command':
                         keep_listening = 0
                         callback(command_result)
                     elif command_result_intention['confidence'] > 0.9 and command_result_intention['value'] == 'stop_command':
