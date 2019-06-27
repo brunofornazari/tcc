@@ -8,6 +8,7 @@ import utils.config.constants as constants
 import pyowm
 from datetime import datetime, timedelta
 from newsapi import NewsApiClient
+import codecs
 if os.environ.get('ENVTYPE') != 'DEV' : from integration.PIR import PIR
 
 
@@ -87,6 +88,8 @@ def call_intent(intent):
     elif intent['intent']['value'] in news_intents :
         intention = intent['intent']['value']
         result = ''
+        templateHTML = f.open('public/templates/noticiasHeader.html').read()
+        templateItem = f.open('public/templates/noticiasItem.html').read()
 
         if check_attribute(news_intents[intention], 'query') :
             query = news_intents[intention]['query']
@@ -105,8 +108,13 @@ def call_intent(intent):
                                                   page_size=5,
                                                   country='br')
         for content in top_headlines['articles']:
-            result += '<div class="news-content"><div class="part-width"><img src="{}" width="300" /></div><div class="part-width"><h1>{}</h1></div><div class="break"></div></div>'.format(content['urlToImage'], content['title'])
-        logger.log(result)
+            news_content = content['content']
+            if len(news_content) > 200:
+                slice_item = slice(0, 200)
+                news_content = news_content[slice_item]
+                news_content += '...'
+            result += templateItem.format(content['urlToImage'], content['title'], news_content)
+        logger.log(templateHTML.format(result))
     else:
         logger.log('Essa ação não está disponível no momento :/')
 
