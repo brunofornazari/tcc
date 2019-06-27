@@ -3,11 +3,10 @@ import numpy as np
 import dlib
 import utils.libs.db as db
 import imutils
-import utils.libs.logger as logger
 from integration.camera import Camera
 
 
-def captureNewFace(sName) :
+def captureNewFace(sName, messageHUB) :
     detectorFace = dlib.get_frontal_face_detector()
     cam = Camera()
     stream = cam.capture()
@@ -27,7 +26,7 @@ def captureNewFace(sName) :
                 cv2.imwrite("dataset/" + str(iId) + "." + str(sampleNumber) + ".jpg", frame)
                 cv2.rectangle(frame, (e, t), (d, b), (0, 255, 255), 2)
                 cv2.waitKey(100)
-            logger.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
+            messageHUB.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
             cam.stop()
             if sampleNumber > 10 :
                 break

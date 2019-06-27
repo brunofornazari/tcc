@@ -1,5 +1,4 @@
 import sqlite3
-import utils.libs.logger as logger
 
 dbName = 'TCC-database.db'
 
@@ -19,7 +18,6 @@ def getUserData(sId) :
     if oUserData != None :
         return oUserData
     else :
-        logger.logError('Não foi posível encontrar nenhum usuário')
         unkn = {}
         unkn.name = 'Unknown'
         #todo - Create a class user to better solve this kind of issue
@@ -43,14 +41,12 @@ def getNextId() :
 
 
 def insertNewUser(iId, sName) :
-    logger.log('Inserindo novo usuário...')
     conn = sqlite3.connect(dbName)
     sQuery = "INSERT INTO users ( id, Name ) VALUES (" + str(iId) + ", '" + sName + "')"
 
     try :
         conn.execute(sQuery)
         conn.commit()
-        logger.log('Novo usuário inserido com sucesso')
     except :
-        logger.logError('Não foi possível inserir novo usuário')
+        print('Não foi possível inserir novo usuário')
     conn.close()
