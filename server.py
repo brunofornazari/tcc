@@ -14,6 +14,7 @@ app.config['SECRET_KEY'] = random.getrandbits(128)
 socketio = SocketIO(app)
 clients = []
 
+__messageHUB__ = 0
 
 @app.route('/')
 def mainPage():
@@ -40,7 +41,7 @@ def handle_createUser(nome_usuario):
     sleep(2)
     #faceCapture.captureNewFace(nome_usuario)
     #facial_trainer.startTraining()
-    testeLogger.teste()
+    testeLogger.teste(messageHUB)
     broadcastMessage('Usuario criado com sucesso!', 'user-creation-complete')
 
 

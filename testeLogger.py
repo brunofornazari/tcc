@@ -1,7 +1,6 @@
-from utils.libs import logger
 from time import sleep
 
-def teste():
-    logger.log('processando')
+def teste(messageHUB):
+    messageHUB.addMessage('processando')
     sleep(5)
-    logger.log('processado!')
+    messageHUB.addMessage('processado!')

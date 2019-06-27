@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6861a69-fdb4-4093-9e77-be562d1f3b20" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/testeLogger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/facialRecognition/deteccao_captura.py" beforeDir="false" afterPath="$PROJECT_DIR$/facialRecognition/deteccao_captura.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/sources/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/sources/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/templates/createUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/templates/createUser.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testeLogger.py" beforeDir="false" afterPath="$PROJECT_DIR$/testeLogger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/libs/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/libs/logger.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,37 +12,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/facialRecognition/deteccao_captura.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="374">
-                    <caret line="34" column="100" lean-forward="true" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
-                    <folding>
-                      <element signature="e#0#9#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/facialRecognition/faceCapture.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="250">
+              <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,26 +41,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testeLogger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
+            <state relative-caret-position="125">
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+        <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="42" lean-forward="true" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
+            <state relative-caret-position="-1107">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -83,31 +60,52 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/static/sources/js/script.js">
+        <entry file="file://$PROJECT_DIR$/speech_module/speechRecognition.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+            <state relative-caret-position="1400">
+              <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/facialRecognition/facial_trainer.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils/libs/logger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="200">
+              <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/templates/createUser.html">
+        <entry file="file://$PROJECT_DIR$/utils/libs/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="31" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="31" />
+            <state relative-caret-position="125">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/templates/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/static/sources/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1400">
+              <caret line="56" column="17" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -154,7 +152,6 @@
         <option value="$PROJECT_DIR$/utils/messageHUB.py" />
         <option value="$PROJECT_DIR$/public/static/sources/client-socketio.js" />
         <option value="$PROJECT_DIR$/public/static/sources/jquery.js" />
-        <option value="$PROJECT_DIR$/utils/libs/logger.py" />
         <option value="$PROJECT_DIR$/testePIR.py" />
         <option value="$PROJECT_DIR$/integration/PIR.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -175,12 +172,13 @@
         <option value="$PROJECT_DIR$/speech_module/speechRecognition.py" />
         <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/facialRecognition/facial_trainer.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/public/templates/createUser.html" />
         <option value="$PROJECT_DIR$/public/static/sources/js/script.js" />
-        <option value="$PROJECT_DIR$/testeLogger.py" />
-        <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/facialRecognition/deteccao_captura.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/server.py" />
+        <option value="$PROJECT_DIR$/testeLogger.py" />
+        <option value="$PROJECT_DIR$/utils/libs/logger.py" />
       </list>
     </option>
   </component>
@@ -196,81 +194,71 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="facialRecognition" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="integration" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="sources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="static" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="sources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="css" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="public" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="resources" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="speech_module" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
-              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="C:\Users\T-Gamer\PycharmProjects\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="TCC" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\BRUNO\PycharmProjects\TCC" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="config" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="libs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -376,7 +364,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="ENVTYPE" value="DEV" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\T-Gamer\.conda\envs\tcc\python.exe" />
+      <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\envs\curso_dlib\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -498,15 +486,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20211361" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49736565" visible="true" weight="0.26868907" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49736565" visible="true" weight="0.44978783" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -575,23 +563,6 @@
           <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/libs/messageHUB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/libs/logger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -705,16 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/speech_module/speechRecognition.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="42" column="80" selection-start-line="42" selection-start-column="80" selection-end-line="42" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/insertNewUser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -724,24 +685,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-112">
-          <caret line="36" column="25" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="25" />
+        <state relative-caret-position="-1107">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="42" lean-forward="true" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="325">
           <caret line="13" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
@@ -753,27 +707,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testeLogger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="29" lean-forward="true" selection-start-column="29" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/static/sources/js/script.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,6 +740,60 @@
           <caret line="34" column="100" lean-forward="true" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="61" selection-start-line="10" selection-start-column="61" selection-end-line="10" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="43" column="32" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/libs/messageHUB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testeLogger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech_module/speechRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="68" column="48" lean-forward="true" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/libs/logger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
