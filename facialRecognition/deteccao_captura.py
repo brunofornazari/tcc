@@ -27,8 +27,8 @@ def getUserFromCamera() :
     while userId == -1 :
         for (i, f) in enumerate(stream):
             frame = f.array
-            frame = imutils.resize(frame, width=400)
-            facesDetectadas = detectorFace(frame, 2)
+            frame = imutils.resize(frame, width=320)
+            facesDetectadas = detectorFace(frame, 1)
             for face in facesDetectadas :
                 e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
                 pontosFaciais = detectorPontos(frame, face)
