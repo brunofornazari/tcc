@@ -12,9 +12,9 @@ def startTraining() :
     detectorPontos = dlib.shape_predictor("resources/shape_predictor_68_face_landmarks.dat")
     reconhecimentoFacial = dlib.face_recognition_model_v1("resources/dlib_face_recognition_resnet_model_v1.dat")
 
-    indice = cPickle.load('resources/indices_captura.pickle')
+    indice = {}
     idx = 0
-    descritoresFaciais = np.load('resources/descritores_captura.npy')
+    descritoresFaciais = None
     arquivos = glob.glob(os.path.join("dataset/", "*.jpg"))
 
     logger.log('Inicializando processo de atualização do banco de imagens...')

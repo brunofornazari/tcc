@@ -62,6 +62,8 @@ def mirror(bSensorCapture):
             thread_speech.start()
 
 
+
+
 def call_intent(intent):
 
     if intent['intent']['value'] == 'previsao_tempo':
