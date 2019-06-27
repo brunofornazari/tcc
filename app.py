@@ -1,6 +1,6 @@
 import os
 import threading
-import facialRecognition.deteccao_captura as detector
+if os.environ.get('ENVTYPE') != 'DEV' : import facialRecognition.deteccao_captura as detector
 import speech_module.speechRecognition as speech
 import utils.libs.logger as logger
 import utils.libs.db as db
@@ -31,12 +31,14 @@ newsapi = NewsApiClient(api_key=constants.NEWS_KEY)
 
 def main() :
     PIR(mirror)
+    #mirror(1)
 
 
 def mirror(bSensorCapture):
 
     if bSensorCapture:
         userId = detector.getUserFromCamera()
+        #userId = 'Visitante'
         if userId != 'Visitante':
             user = db.getUserData(userId)
         else:
@@ -100,8 +102,8 @@ def call_intent(intent):
                                                   language='pt',
                                                   page_size=5,
                                                   country='br')
-        for content in top_headlines:
-            result += '<div class="news-content"><div><img src="{}" /></div><div><h1>{}</h1><p>{}</p></div><div class="break"></div></div>'.format(content['title'], content['content'])
+        for content in top_headlines['articles']:
+            result += '<div class="news-content"><div class="part-width"><img src="{}" width="300" /></div><div class="part-width"><h1>{}</h1></div><div class="break"></div></div>'.format(content['urlToImage'], content['title'])
         logger.log(result)
     else:
         logger.log('Essa ação não está disponível no momento :/')

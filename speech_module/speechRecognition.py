@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import utils.libs.logger as logger
 import utils.config.constants as constants
+import utils.libs.utils as util
 
 def startRecognizing():
     r = sr.Recognizer()
@@ -34,9 +35,10 @@ def get_intention(response):
 
 
 def get_values(response):
+    result = {}
     if response is not None and response['entities'] and response['entities']:
         intents = response['entities']
-        result = {}
+
         for intent in intents:
             result[intent] = {"value" : intents[intent][0]['value'], "confidence" : intents[intent][0]['confidence']}
 
@@ -55,8 +57,14 @@ def wait_command(keep_execution, callback):
                     logger.log('O que posso fazer por você?')
                     command = startRecognizing()
                     command_result = get_values(command)
-                    command_result_intention = command_result['intent']
-                    if command_result_intention['confidence'] > 0.9 and command_result_intention['value'] != 'stop_command':
+                    print(command_result)
+                    if util.check_attribute(command_result, 'intent') == True:
+                        command_result_intention = command_result['intent']
+                    else :
+                        logger.log('Não entendi o que quis dizer, poderia repetir?')
+                        pass
+
+                    if command_result_intention['confidence'] > 0.6 and command_result_intention['value'] != 'stop_command':
                         keep_listening = 0
                         callback(command_result)
                     elif command_result_intention['confidence'] > 0.9 and command_result_intention['value'] == 'stop_command':
