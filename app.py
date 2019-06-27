@@ -68,6 +68,7 @@ def mirror(bSensorCapture):
 def call_intent(intent):
 
     if intent['intent']['value'] == 'previsao_tempo':
+        templateHTML = codecs.open('public/templates/previsaoTemplate.html')
         if check_attribute(intent, 'location'):
             where = intent['location']['value']
         else:
@@ -84,7 +85,7 @@ def call_intent(intent):
         weather = forecaster.get_weather_at(when)
         temperature = weather.get_temperature('celsius')
 
-        logger.log('A previsão do tempo para o dia {}/{}/{} é de: <br> Min: {}ºC e Max: {} ºC'.format(when.day, when.month, when.year, temperature['temp_min'], temperature['temp_max']))
+        logger.log(templateHTML.format(when.day, when.month, when.year, where, temperature['temp'], temperature['temp_min'], temperature['temp_max']))
     elif intent['intent']['value'] in news_intents :
         intention = intent['intent']['value']
         result = ''

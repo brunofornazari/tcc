@@ -128,3 +128,23 @@ button:focus, input:focus {
   }
 
 }
+
+.previsao-container{
+  -webkit-column-count: 2;
+     -moz-column-count: 2;
+          column-count: 2;
+}
+
+.previsao-info{
+    font-size: 3vh;
+}
+
+.previsao-media{
+    font-size: 8vh;
+    text-align: center;
+}
+
+.previsao-minmax{
+    font-size: 3vh;
+    padding-top: 6.5vh;
+}
