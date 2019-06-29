@@ -31,9 +31,10 @@ news_intents = {
 newsapi = NewsApiClient(api_key=constants.NEWS_KEY)
 
 def main() :
-
-        #PIR(mirror)
-    mirror(1)
+    if os.environ.get('ENVTYPE') != 'DEV':
+        PIR(mirror)
+    else :
+        mirror(1)
 
 
 
@@ -42,7 +43,6 @@ def mirror(bSensorCapture):
 
     if bSensorCapture:
         userId = detector.getUserFromCamera()
-        #userId = 'Visitante'
         if userId != 'Visitante':
             print(userId)
             user = db.getUserData(userId)
