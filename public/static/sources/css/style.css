@@ -148,3 +148,38 @@ button:focus, input:focus {
     font-size: 3vh;
     padding-top: 6.5vh;
 }
+/* BASEADO NO CÓDIGO DE : Amli em https://codepen.io/uzcho_/pen/QxbBXo */
+.loading{
+	width:100%;
+	height:100%;
+	display:block;
+	position:absolute
+	}
+
+.loading:before,
+.loading:after,
+.loading>div{
+	width:50px;
+	height:50px;
+	top:5%;
+	right:3%;
+	display:block;
+	position:absolute;
+	border-radius:50%;
+	border:4px solid #FFF
+	}
+
+.loading:before
+	{content:"";animation:scale 1s ease-in infinite}
+
+.loading>div{animation:scale 2s ease-in infinite}
+
+.hidden{
+    display : none;
+}
+
+@keyframes scale{
+	from{transform:translate(-50%,-50%) scale(0,0) }
+	to{transform:translate(-50%,-50%) scale(1,1)}
+	}
+

@@ -1,9 +1,8 @@
 import sys
 from server import messageHUB
 
-def log(sMessage) :
-    print(sMessage)
-    messageHUB.addMessage(sMessage)
+def log(sMessage, emition_type='message') :
+    messageHUB.addMessage(sMessage, emition_type)
 
 def logStatus(sMessage, iCurrent, iMax) :
     message = sMessage + ' - ' + str(iCurrent) + '/' + str(iMax)
@@ -22,7 +21,6 @@ def logStatusPercentage(sMessage, iCurrent, iMax) :
     messageHUB.addMessage(message)
 
 def logError(sMessage) :
-    print('\n\nError: {}'.format(sMessage) + '\n\n')
     messageHUB.addMessage('<span class="error">Oops..{} <br> :(</span>'.format(sMessage))
 
 def logDebug(sMessage) :

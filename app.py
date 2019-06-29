@@ -113,12 +113,14 @@ def call_intent(intent):
                                                   page_size=3,
                                                   country='br')
         for content in top_headlines['articles']:
-            news_content = content['content']
-            if len(news_content) > 60:
-                slice_item = slice(0, 60)
-                news_content = news_content[slice_item]
-                news_content += '...'
-            result += templateItem.format(content['urlToImage'], content['title'], news_content)
+            news_title = content['title']
+            slice_item = slice(0, 80)
+
+            if len(news_title):
+                news_title = news_title[slice_item]
+                news_title += '...'
+
+            result += templateItem.format(content['urlToImage'], news_title)
         logger.log(templateHTML.format(result))
     else:
         logger.log('Essa ação não está disponível no momento :/')

@@ -49,14 +49,17 @@ def wait_command(keep_execution, callback):
 
     while keep_execution:
         response = startRecognizing()
-        logger.log('Processando...')
+        logger.log(True, 'processing')
         intention, confidence = get_intention(response)
         if confidence > 0.9:
             if intention == 'start_command':
                 keep_listening = 1
+                logger.log(False, 'processing')
                 while keep_listening == 1 and keep_execution == 1:
                     logger.log('O que posso fazer por você?')
+                    logger.log(True, 'processing')
                     command = startRecognizing()
+                    logger.log(False, 'processing')
                     command_result = get_values(command)
                     if util.check_attribute(command_result, 'intent') == True:
                         command_result_intention = command_result['intent']

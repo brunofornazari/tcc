@@ -12,6 +12,17 @@ $(document).ready(function(){
 
    });
 
+    socket.on('processing', function(bState){
+        var domElement = $('#processing');
+
+        if(!bState){
+            domElement.addClass('hidden')
+        } else {
+            domElement.removeClass('hidden')
+        }
+
+   });
+
    socket.on('user-creation-complete', function(msg){
         if(msg !== '' && msg.length !== 0){
             $('#messages').html(msg);

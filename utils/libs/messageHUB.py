@@ -11,10 +11,10 @@ class MessageHUB:
     def __str__(self):
         return self._messageHUB
 
-    def addMessage(self, sMessage):
+    def addMessage(self, sMessage, emition_type='message'):
         self._messageHUB = sMessage
         for callback in self._observers:
-            callback(self._messageHUB)
+            callback(self._messageHUB, emition_type)
 
     def logStatus(self, sMessage, iCurrent, iMax):
         message = sMessage + ' - ' + str(iCurrent) + '/' + str(iMax)
