@@ -44,6 +44,7 @@ def mirror(bSensorCapture):
         userId = detector.getUserFromCamera()
         #userId = 'Visitante'
         if userId != 'Visitante':
+            print(userId)
             user = db.getUserData(userId)
         else:
             user = ['Visitante']

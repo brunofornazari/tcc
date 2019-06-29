@@ -14,7 +14,7 @@ def captureNewFace(sName, messageHUB) :
 
 
 
-    while True:
+    while sampleNumber < 10:
         i, img = cam.read()
         faces = detectorFace(img, 1)
 
@@ -28,9 +28,7 @@ def captureNewFace(sName, messageHUB) :
                 cv2.waitKey(100)
             messageHUB.logStatusPercentage('Capturando imagens do usuário', sampleNumber, 10)
 
-            if sampleNumber > 10 :
+            if sampleNumber >= 10 :
                 break
-        else :
-            break
 
     db.insertNewUser(iId, sName)

@@ -18,10 +18,7 @@ def getUserData(sId) :
     if oUserData != None :
         return oUserData
     else :
-        unkn = {}
-        unkn.name = 'Unknown'
-        #todo - Create a class user to better solve this kind of issue
-        return unkn
+        return ['Visitante']
 
 def getNextId() :
     conn = sqlite3.connect(dbName)

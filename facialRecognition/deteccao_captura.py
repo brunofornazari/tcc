@@ -22,24 +22,24 @@ def getUserFromCamera() :
     userId = -1
 
     logger.log('Detectando usuário...')
-
-    while userId == -1:
+    tentativas_conexao = 0
+    while userId == -1 or tentativas_conexao < 10:
         ret, imagem = cam.read()
         facesDetectadas = detectorFace(imagem, 2)
         for face in facesDetectadas:
-
-            e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
             pontosFaciais = detectorPontos(imagem, face)
+
             descritorFacial = reconhecimentoFacial.compute_face_descriptor(imagem, pontosFaciais)
+            if descritorFacial != None:
+                listaDescritorFacial = [fd for fd in descritorFacial]
+                npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
+                npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
 
-            listaDescritorFacial = [fd for fd in descritorFacial]
-            npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
-            npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
-
-            distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
-            minimo = np.argmin(distancias)
-            distanciaMinima = distancias[minimo]
-
+                distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
+                minimo = np.argmin(distancias)
+                distanciaMinima = distancias[minimo]
+            else :
+                pass
             if distanciaMinima <= limiar :
                 userId = os.path.split(indices[minimo])[1].split(".")[0]
             else :
@@ -49,11 +49,13 @@ def getUserFromCamera() :
             if userId != -1:
                 break
 
-        if(userId != 0):
+        if(userId != -1):
             break
-        #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
-        if cv2.waitKey(1) == ord('q'):
-            break
+
+        tentativas_conexao += 1
+
+    if userId == -1:
+        userId = 'Visitante'
 
     cv2.destroyAllWindows()
 
