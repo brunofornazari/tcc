@@ -18,52 +18,45 @@ def getUserFromCamera() :
     indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
-    camera = Camera()
-    stream = camera.capture()
+    cam = cv2.VideoCapture(0)
     userId = -1
 
     logger.log('Detectando usuário...')
 
-    while userId == -1 :
-        for (i, f) in enumerate(stream):
-            frame = f.array
-            frame = imutils.resize(frame, width=320)
-            facesDetectadas = detectorFace(frame, 1)
-            for face in facesDetectadas :
-                e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
-                pontosFaciais = detectorPontos(frame, face)
-                descritorFacial = reconhecimentoFacial.compute_face_descriptor(frame, pontosFaciais)
+    while userId == -1:
+        ret, imagem = cam.read()
+        facesDetectadas = detectorFace(imagem, 2)
+        for face in facesDetectadas:
 
-                listaDescritorFacial = [fd for fd in descritorFacial]
-                npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
-                npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
+            e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
+            pontosFaciais = detectorPontos(imagem, face)
+            descritorFacial = reconhecimentoFacial.compute_face_descriptor(imagem, pontosFaciais)
 
-                distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
-                minimo = np.argmin(distancias)
-                distanciaMinima = distancias[minimo]
+            listaDescritorFacial = [fd for fd in descritorFacial]
+            npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)
+            npArrayDescritorFacial = npArrayDescritorFacial[np.newaxis, :]
 
-                if distanciaMinima <= limiar :
-                    if os.environ.get('ENVTYPE') == 'DEV' :
-                        userId = os.path.split(indices[minimo])[1].split(".")[0]
+            distancias = np.linalg.norm(npArrayDescritorFacial - descritoresFaciais, axis=1)
+            minimo = np.argmin(distancias)
+            distanciaMinima = distancias[minimo]
 
-                    else :
-                        userId = os.path.split(indices[minimo])[1].split('\\')[1].split(".")[0]
-                    logger.log('Usuário detectado')
-                else :
-                    userId = 'Visitante'
+            if distanciaMinima <= limiar :
+                userId = os.path.split(indices[minimo])[1].split(".")[0]
+            else :
+                userId = 'Visitante'
 
-                camera.stop()
-                if userId != 0:
-                    break
-            camera.stop()
-            if(userId != 0):
+
+            if userId != -1:
                 break
+
+        if(userId != 0):
+            break
         #todo - Caso de exceção onde não foi possível encontrar nenhum user cadastrado
         if cv2.waitKey(1) == ord('q'):
             break
 
     cv2.destroyAllWindows()
-    print('returning')
+
     return userId
 
 

@@ -4,7 +4,7 @@ import random
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 from utils.libs.messageHUB import MessageHUB
-#from facialRecognition import faceCapture, facial_trainer
+from facialRecognition import faceCapture, facial_trainer
 from time import sleep
 
 dir_path = os.path.dirname(os.path.realpath(__file__)) + '/public'
@@ -38,8 +38,8 @@ def handle_disconnect():
 def handle_createUser(nome_usuario):
     broadcastMessage('Iniciando processo de captura de imagens de novo usuário')
     sleep(2)
-#    faceCapture.captureNewFace(nome_usuario)
-#    facial_trainer.startTraining()
+    faceCapture.captureNewFace(nome_usuario, messageHUB)
+    facial_trainer.startTraining(messageHUB)
     broadcastMessage('Usuario criado com sucesso!', 'user-creation-complete')
 
 

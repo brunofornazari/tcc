@@ -51,4 +51,4 @@ def startTraining(messageHUB) :
     with open("resources/indices_captura.pickle", 'wb') as f :
         cPickle.dump(indice, f)
 
-    messageHUB.log('Processo de atualização do banco de imagens finalizado com sucesso!');
+    messageHUB.addMessage('Processo de atualização do banco de imagens finalizado com sucesso!');

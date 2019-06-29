@@ -1,6 +1,6 @@
 import os
 import threading
-if os.environ.get('ENVTYPE') != 'DEV' : import facialRecognition.deteccao_captura as detector
+import facialRecognition.deteccao_captura as detector
 import speech_module.speechRecognition as speech
 import utils.libs.logger as logger
 import utils.libs.db as db
@@ -31,11 +31,11 @@ news_intents = {
 newsapi = NewsApiClient(api_key=constants.NEWS_KEY)
 
 def main() :
-    try:
-        PIR(mirror)
-        #mirror(1)
-    except:
-        logger.logError('Algo saiu errado, tente novamente mais tarde')
+
+        #PIR(mirror)
+    mirror(1)
+
+
 
 
 def mirror(bSensorCapture):

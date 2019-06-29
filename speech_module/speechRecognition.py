@@ -23,9 +23,7 @@ def startRecognizing():
     except RuntimeError:
         logger.logError('Algo saiu errado')
         return 2
-    except:
-        logger.logError('Algo saiu errado, tente novamente mais tarde')
-        return 2
+
 
 def get_intention(response):
     if response is not None and util.check_attribute(response, 'entities') and util.check_attribute(response['entities'], 'intent'):
