@@ -1,3 +1,48 @@
+"""
+app.py
+
+App.py é responsável por gerenciar o fluxo de eventos que identifica, reconhece, ouve e responde as requisições de usuários
+a frente do espelho. Os fluxo de eventos é definido conforme comentado abaixo:
+
+ -> Para cada mudança de status do PIR conectado via GPIO pela raspberry pi, uma função callback 'mirror(Boolean bSensorCapture)' é
+ invocada. Caso o ENV_TYPE=DEV, o valor padrão do bSensorCapture é 1 (nível lógico alto), que dispara os demais eventos.
+
+ -> Quando a mudança do PIR for para estado alto (1), o método getUserFromCamera(), da biblioteca 'facialRecognition.deteccao_captura'
+ é invocado e espera como retorno um id de usuário de banco ou 'Visitante', em caso onde não for possível reconhecer um usuário em particular.
+
+ -> Caso um usuário seja reconhecido e seu id de banco seja o retorno da chamada, é usado o método getUserData(int userId) para buscar no
+ banco de dados os demais dados de usuário através da biblioteca utils.libs.db.
+
+ -> O período é definido através da hora local do sistema afim de determinar qual seria a melhor forma de abordar o usuário
+
+ -> Uma mensagem então é enviada ao usuário para que saiba que o espelho está a disposição aguardando um comando.
+
+ -> Uma nova thread é iniciada para cuidar de escutar e receber comandos do usuário através do método wait_command(Boolean bSensorCapture, function call_intent)
+ da biblioteca speech_module.speechRecognition. O estado do sensor em observer é passado ao método para que este saiba quando parar a thread ou ficar inativo quando
+ o usuário não for mais identificado pelo sensor PIR. call_intent é a função que deve ser invocada uma vez que o usuário faça um comando e que deverá tratar
+ as requisições conforme a intent identificada.
+
+ Funções e métodos
+
+  - main()
+    Inicia a classe PIR e define a função mirror(Boolean bSensorCaptrura) como callback.
+
+  - mirror(Boolean bSensorCapture)
+    Responsável por invocar os métodos de identificação, reconhecimento do perfil e escutar os comandos dos usuários.
+
+  - call_intent(dict Intent)
+     Dependendo da intent, call_intent irá realizar uma ação e responder ao usuário com os dados solicitados, sendo definido pelo escopo do projeto as
+     seguintes intents programas:
+
+        * previsao_tempo - Identifica através da intent o quando e onde para solicitar ao pyowm, via request Server-to-Server, a previsão do tempo
+        nas condições estabelecidas.
+
+        * noticias_esportes/noticias_politica/noticias_economia/notivias_gerais - Identifica, dependendo do tipo de notícia, a busca (query) e categoria
+        (category) a qual ela se encaixaria para que uma request Server-to-Server seja realizada ao newsapi afim de responder ao usuário os tipos de
+        notícias solicitadas.
+
+"""
+
 import os
 import threading
 import facialRecognition.deteccao_captura as detector
@@ -11,8 +56,10 @@ from newsapi import NewsApiClient
 import codecs
 if os.environ.get('ENVTYPE') != 'DEV' : from integration.PIR import PIR
 
-
+#Inicia o pyowm com a chave API cadastrada
 owm = pyowm.OWM(constants.PYOWM_KEY)
+
+#Cria lista das intents de notícias e suas respectivas queries e categories disponíveis
 news_intents = {
     'noticias_politica' : {
         'query' : 'politica'
@@ -28,7 +75,9 @@ news_intents = {
     }
 }
 
+#Inicia a newsapi com a chave API vinculada a conta criada.
 newsapi = NewsApiClient(api_key=constants.NEWS_KEY)
+
 
 def main() :
     if os.environ.get('ENVTYPE') != 'DEV':
@@ -132,4 +181,5 @@ def check_attribute(object, property):
 
     return False
 
-
+if __name__ == '__main__' :
+    pass
