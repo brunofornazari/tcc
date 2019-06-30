@@ -1,5 +1,3 @@
-#from server import socketio
-#from flask_socketio import emit
 import sys
 
 class MessageHUB:
@@ -42,6 +40,5 @@ class MessageHUB:
 
     def getMessages(self):
         p = self._messageHUB.copy()
-        print(self._messageHUB)
         self._messageHUB = ''
         return p

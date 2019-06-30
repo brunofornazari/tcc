@@ -1,13 +1,13 @@
 import cv2
-import numpy as np
 import dlib
 import utils.libs.db as db
-import imutils
+from integration.camera import Camera
 
 
 def captureNewFace(sName, messageHUB) :
     detectorFace = dlib.get_frontal_face_detector()
-    cam = cv2.VideoCapture(0)
+    cam = Camera()
+    cam.start()
 
     iId = db.getNextId()
     sampleNumber = 0
@@ -15,7 +15,7 @@ def captureNewFace(sName, messageHUB) :
 
 
     while sampleNumber < 10:
-        i, img = cam.read()
+        img = cam.read()
         faces = detectorFace(img, 1)
 
         for face in faces:

@@ -26,6 +26,7 @@ def startRecognizing():
 
 
 def get_intention(response):
+
     if response is not None and util.check_attribute(response, 'entities') and util.check_attribute(response['entities'], 'intent'):
         intents = response['entities']['intent']
         for intent in intents:
@@ -36,7 +37,7 @@ def get_intention(response):
 
 def get_values(response):
     result = {}
-    if response is not None and response['entities'] and response['entities']:
+    if response is not None and isinstance(response, dict) and response['entities'] and response['entities']:
         intents = response['entities']
 
         for intent in intents:
@@ -50,9 +51,11 @@ def wait_command(keep_execution, callback):
     while keep_execution:
         response = startRecognizing()
         logger.log(True, 'processing')
+        print('processando')
         intention, confidence = get_intention(response)
         if confidence > 0.9:
             if intention == 'start_command':
+                print('ecutando')
                 keep_listening = 1
                 logger.log(False, 'processing')
                 while keep_listening == 1 and keep_execution == 1:
@@ -61,16 +64,17 @@ def wait_command(keep_execution, callback):
                     command = startRecognizing()
                     logger.log(False, 'processing')
                     command_result = get_values(command)
+                    command_result_intention = False
                     if util.check_attribute(command_result, 'intent') == True:
                         command_result_intention = command_result['intent']
                     else :
                         logger.log('Não entendi o que quis dizer, poderia repetir?')
                         pass
 
-                    if command_result_intention['confidence'] > 0.7 and command_result_intention['value'] != 'stop_command':
+                    if command_result_intention and command_result_intention['confidence'] > 0.8 and command_result_intention['value'] != 'stop_command':
                         keep_listening = 0
                         callback(command_result)
-                    elif command_result_intention['confidence'] > 0.9 and command_result_intention['value'] == 'stop_command':
+                    elif command_result_intention and command_result_intention['confidence'] > 0.9 and command_result_intention['value'] == 'stop_command':
                         keep_listening = 0
                         logger.log('Até mais!')
                     else:

@@ -18,13 +18,14 @@ def getUserFromCamera() :
     indices = np.load("resources/indices_captura.pickle", allow_pickle=True)
     descritoresFaciais = np.load("resources/descritores_captura.npy", allow_pickle=True)
     limiar = 0.5
-    cam = cv2.VideoCapture(0)
+    cam = Camera()
+    cam.start()
     userId = -1
 
     logger.log('Detectando usuário...')
     tentativas_conexao = 0
     while userId == -1 or tentativas_conexao < 10:
-        ret, imagem = cam.read()
+        imagem = cam.read()
         facesDetectadas = detectorFace(imagem, 2)
         for face in facesDetectadas:
             pontosFaciais = detectorPontos(imagem, face)
