@@ -8,14 +8,39 @@ $(document).ready(function(){
    socket.on('message', function(msg){
         if(msg !== '' && msg.length !== 0){
             $('#messages').html(msg);
-            console.log('msg', msg);
         }
 
    });
 
-   $('#sendButton').on('click', function(){
-        socket.send($('#myMessage').val());
-        $('#myMessage').val('');
+    socket.on('processing', function(bState){
+        var domElement = $('#processing');
+
+        if(!bState){
+            domElement.addClass('hidden')
+        } else {
+            domElement.removeClass('hidden')
+        }
+
+   });
+
+   socket.on('user-creation-complete', function(msg){
+        if(msg !== '' && msg.length !== 0){
+            $('#messages').html(msg);
+            $('.createUser-form').show();
+        }
+
+   });
+
+   $('#createUser').on('click', function(){
+        var sNome = $('#nome').val();
+        if(sNome){
+            socket.emit('register-user', sNome);
+            $('.createUser-form').hide();
+        } else {
+            alert('O nome é obrigatório!')
+        }
+
+
    });
 
 });
