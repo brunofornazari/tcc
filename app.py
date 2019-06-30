@@ -80,6 +80,7 @@ newsapi = NewsApiClient(api_key=constants.NEWS_KEY)
 
 
 def main() :
+    # Caso o ENV_TYPE=DEV, considera-se sinal alto de presença sempre, se não, ativa-se a PIR e observa-se seu valor
     if os.environ.get('ENVTYPE') != 'DEV':
         PIR(mirror)
     else :
@@ -89,15 +90,19 @@ def main() :
 
 
 def mirror(bSensorCapture):
-
+    # Caso o sensor PIR envie sinal alto, iniciado o fluxo
     if bSensorCapture:
+        # Inicia o fluxo para identificação de index de usuário
         userId = detector.getUserFromCamera()
+        # Caso o usuário tenha valor diferente de 'Visitante', seus dados são obtidos através do banco de dados, do contrário
+        # o fluxo inicia considerando um usuário padrão 'Visitante'
         if userId != 'Visitante':
-            print(userId)
             user = db.getUserData(userId)
         else:
             user = ['Visitante']
 
+        # A hora local do sistema operacional é obtida para que possa definir como seria a melhor forma de cumprimentar
+        # o usuário
         now = datetime.now()
         at_noon = now.replace(hour=12)
         at_night = now.replace(hour=18)
@@ -109,8 +114,12 @@ def mirror(bSensorCapture):
         else:
             greeting = 'Boa tarde'
 
+        # Então é enviado o cumprimento gerado ao usuário
         logger.log('{}, {}'.format(greeting, str(user[0])))
 
+        # Caso haja dados de usuário, como é esperado, inicia-se a thread de captura e tratamento de comando pelo
+        # microfone. O valor do sensor e uma função callback 'call_intent' é enviado para a thread para que possa
+        # tratar devidamente as ações conforme as ações de usuário
         if len(user) > 0:
             thread_speech = threading.Thread(target=speech.wait_command, args=[bSensorCapture, call_intent])
             thread_speech.start()
@@ -119,48 +128,75 @@ def mirror(bSensorCapture):
 
 
 def call_intent(intent):
-
+    # Caso o valor de retorno da wit.ai seja uma intent cujo valor seja 'previsao_tempo', é iniciado o tratamento para
+    # a ação de recuperar os dados de previsão metereológica conforme as informações obtidas.
     if intent['intent']['value'] == 'previsao_tempo':
+        # Carrega o tempalte HTML que será, depois, retornado ao usuário com os dados
         templateHTML = codecs.open('public/templates/previsaoTemplate.html').read()
+
+        # Verifica-se se há na intent um atributo 'location', se houver, o valor desse atributo é considerado para o local
+        # de onde deseja-se saber a previsão metereológico, se não houver, é considerado um valor padrão 'São Paulo'
         if check_attribute(intent, 'location'):
             where = intent['location']['value']
         else:
             where = 'São Paulo'
 
+        # Verifica-se se há na intent um atributo 'datetime', se houver, o valor desse atributo é considerado para quando
+        # deseja-se saber a previsão metereológico, se não houver, é considerado um valor padrão do dia atual da requisição
         if check_attribute(intent, 'datetime'):
             slice_object = slice(0, 10)
             when = datetime.strptime(intent['datetime']['value'][slice_object], '%Y-%m-%d')
             when = when + timedelta(days=0, hours=24)
         else:
-            when = datetime.now() + timedelta(days=0, hours=24)
+            when = datetime.now() + timedelta(days=0, hours=12)
 
+        # Determina, para o owm, o local e data de quando se deseja obter a previsão metereológica
         forecaster = owm.three_hours_forecast(where)
         weather = forecaster.get_weather_at(when)
+        # Configura-se que o valor da temperatura deverá sem em graus Célcius
         temperature = weather.get_temperature('celsius')
 
+        # Os valores de local, hora e valores de temperatura são formatados no template HTML e é enviado ao client
         logger.log(templateHTML.format(when.day, when.month, when.year, where, temperature['temp'], temperature['temp_min'], temperature['temp_max']))
     elif intent['intent']['value'] in news_intents :
+        # Caso o valor da intent enteja na lista de tipos de noticias disponíveis, inicia-se o fluxo de tratameto para busca e retorno de notícias
+
+        # O valor da intent é atribuido a uma variável para que seu acesso seja facilitado
         intention = intent['intent']['value']
+
+        # É criado uma variável result em string vazia que é onde serão concatenados os templates e valores ao decorrer do código
         result = ''
+
+        # Carregado os templates html, dois templates são usados, um que é agregado ao outro, o noticiasHeader define a estrutura da lista de notícias,
+        # o noticiasItem define a estrutura de cada item (notícia) e como será demonstrada
         templateHTML = codecs.open('public/templates/noticiasHeader.html').read()
         templateItem = codecs.open('public/templates/noticiasItem.html').read()
 
+        # Caso haja, na configuração do item da lista em que a intent se encontra, um atributo query, este valor da intent é
+        # definido em uma variável 'query'. Caso não houver, um valor '' é atribuído
         if check_attribute(news_intents[intention], 'query') :
             query = news_intents[intention]['query']
         else :
             query = ''
 
+        # Caso haja, na configuração do item da lista em que a intent se encontra, um atributo category, este valor é
+        # definido em uma variável 'category'. Caso não houver, um valor 'general' é atribuído
         if check_attribute(news_intents[intention], 'category') :
             category = news_intents[intention]['category']
         else :
             category = 'general'
 
+        # É atribuído as variáveis query e category para a chamada das notícias via newsapi e seu resultado em uma variável
+        # top_headlines
         top_headlines = newsapi.get_top_headlines(
                                                   q=query,
                                                   category=category,
                                                   language='pt',
                                                   page_size=3,
                                                   country='br')
+
+        # Para cada notícia retornada, é separado o título e a utl de imagem que, em seguida é concatenada a variável
+        # result
         for content in top_headlines['articles']:
             news_title = content['title']
             slice_item = slice(0, 80)
@@ -170,16 +206,23 @@ def call_intent(intent):
                 news_title += '...'
 
             result += templateItem.format(content['urlToImage'], news_title)
+        # Após iterar sobre as notícias, limitadas à 3 (devido ao tamanho da tela), as informações são enviadas ao usuário.
         logger.log(templateHTML.format(result))
     else:
+        # Caso a intent não esteja dentro das opções válidas, é avisado ao usuário que a ação não está disponível
         logger.log('Essa ação não está disponível no momento :/')
 
 
 def check_attribute(object, property):
+    # A função check_attribute é responsável por avaliar se a propriedade passada faz parte do objeto em questão
+    # para isso, itera-se por cada propriedade disponível no objeto e compara a propriedade passada como parâmetro
+    # caso haja, o loop é interrompido e returna-se True. Se ao final da iteração não houver retornado ao usuário,
+    # retorna-se False.
     for attribute in object:
         if attribute == property: return True
 
     return False
 
+# Caso o app.py seja iniciado diretamente, o fluxo não é iniciado.
 if __name__ == '__main__' :
     pass

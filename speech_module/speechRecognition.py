@@ -51,11 +51,9 @@ def wait_command(keep_execution, callback):
     while keep_execution:
         response = startRecognizing()
         logger.log(True, 'processing')
-        print('processando')
         intention, confidence = get_intention(response)
         if confidence > 0.9:
             if intention == 'start_command':
-                print('ecutando')
                 keep_listening = 1
                 logger.log(False, 'processing')
                 while keep_listening == 1 and keep_execution == 1:
