@@ -1,4 +1,4 @@
-***
+"""
 deteccao_captura.py
 
 Detecção_Captura.py é responsável por fazer a detecção e identificação a face através das caracteristicas capturadas nas imagens 
@@ -7,7 +7,7 @@ retiradas pelo faceCapture.py. Para isto, ele segue uma rota de fluxo:
     - Ele realiza até 10 tentativas de identificação;
     - Caso identifique, ele retorna informando a qual perfil pertence a face;
     - Caso não identifique as caracteristicas em nenhum dos perfils, ele retorna informando que é o perfil de um visitante;
-***
+"""
 
 import os
 import dlib
