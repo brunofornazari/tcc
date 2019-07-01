@@ -1,3 +1,13 @@
+"""
+speechRecognition.py
+
+SpeechRecognition.py é responsável por iniciar a biblioteca speech_recognition junto do microfone para realizar a captura de uma 
+frase e envio para a Wit.ai processar este aúdio e retornar com o valor requisitado. Ele realiza isto seguindo ma rota de fluxo:
+    - Primeiro ele ajusta os dados que forem capturados através de uma instancia para reconhecimento de ruídos ambiente;
+    - Depois disso, ele escuta as frases ditas e absorvidas pelo microfone;
+    - Ele envia para o Wit.ai para transformação em texto;
+"""
+
 import speech_recognition as sr
 import utils.libs.logger as logger
 import utils.config.constants as constants
