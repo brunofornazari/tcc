@@ -1,3 +1,10 @@
+"""
+camera.py
+
+Camera.py é resposável por fazer a ativação da câmera através de threads. Através dela, outras classes e métodos conseguem
+instanciá-la quando necessário para captura de imagens ou até mesmo fazer capturas ininterruptas até que a thread seja finalizada.
+"""
+
 from threading import Thread
 import cv2
 
