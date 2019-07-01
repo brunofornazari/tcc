@@ -1,3 +1,11 @@
+"""
+PIR.py
+
+PIR.py é responsável por fazer a requisição do acionamento e captura do recebimento de sinal. Ele utiliza de GPIOs para fazer 
+este gerenciamento, assim conseguindo ser chamado por outras classes e métodos quando necessário que o periférico seja acionado 
+e/ou ficar no aguardo de alguma identificação e sinal.
+"""
+
 import RPi.GPIO as GPIO
 
 
