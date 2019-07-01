@@ -4,12 +4,9 @@ deteccao_captura.py
 Detecção_Captura.py é responsável por fazer a detecção e identificação a face através das caracteristicas capturadas nas imagens 
 retiradas pelo faceCapture.py. Para isto, ele segue uma rota de fluxo:
     - Inicia o processo de detecção de face nas imagens capturadas;
-        -- Ele realiza até 10 tentativas de identificação, caso não consigua ele toda duas possíveis ações:
-            --- Caso não tenha identificado uma face, ele finaliza o processo;
-            --- Caso identifique mais de uma face, ele finaliza o processo;
-    - Realiza a comparação de caracteristiscas com usuários cadatrados;
-        -- Caso identifique, ele retorna informando a qual perfil pertence a face;
-        -- Caso não identifique as caracteristicas em nenhum dos perfils, ele retorna informando que é o perfil de um visitante;
+    - Ele realiza até 10 tentativas de identificação;
+    - Caso identifique, ele retorna informando a qual perfil pertence a face;
+    - Caso não identifique as caracteristicas em nenhum dos perfils, ele retorna informando que é o perfil de um visitante;
 ***
 
 import os
