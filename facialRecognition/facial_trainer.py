@@ -1,10 +1,10 @@
-***
+"""
 facial_trainer.py
 
 Facial_Trainer.py é responsável por fazer o treinamento facial, reconhecendo e armazenando as caracteristicas faciais e cada 
 usuário. Porém, por utilizar o HOG, ele só é capaz de treinar uma face por vez e em uma posição estática de perfíl. Caso as 
 imagens retiradas não respeitem estas características, ele finaliza o processo sem finalizá-lo.
-***
+"""
 
 import os
 import glob
