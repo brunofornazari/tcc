@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6861a69-fdb4-4093-9e77-be562d1f3b20" name="Default Changelist" comment="" />
+    <list default="true" id="a6861a69-fdb4-4093-9e77-be562d1f3b20" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/facialRecognition/faceCapture.py" beforeDir="false" afterPath="$PROJECT_DIR$/facialRecognition/faceCapture.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +24,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="697">
               <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
               <folding>
                 <element signature="e#2621#2630#0" expanded="true" />
@@ -34,7 +36,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="1683">
               <caret line="99" column="33" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="33" />
               <folding>
                 <element signature="e#2753#2762#0" expanded="true" />
@@ -46,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/facialRecognition/faceCapture.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+            <state relative-caret-position="394">
+              <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -186,6 +188,17 @@
               <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\Felipe\Documents\UAM\11º Semestre\Projeto Integrado de Curso II (TCC 2)\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="facialRecognition" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Felipe\Documents\UAM\11º Semestre\Projeto Integrado de Curso II (TCC 2)\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="tcc" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Felipe\Documents\UAM\11º Semestre\Projeto Integrado de Curso II (TCC 2)\tcc" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="utils" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="libs" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -615,26 +628,6 @@
     <entry file="file://$PROJECT_DIR$/utils/libs/messageHUB.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
-          <folding>
-            <element signature="e#2621#2630#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="99" column="33" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="33" />
-          <folding>
-            <element signature="e#2753#2762#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/facialRecognition/facial_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -662,10 +655,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1683">
+          <caret line="99" column="33" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="33" />
+          <folding>
+            <element signature="e#2753#2762#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+          <folding>
+            <element signature="e#2621#2630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/facialRecognition/faceCapture.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="28" lean-forward="true" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        <state relative-caret-position="394">
+          <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
