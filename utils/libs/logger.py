@@ -1,3 +1,10 @@
+"""
+logger.py
+
+Logger.py é responsável por receber, identificar e direcionar todos os tipos de logs da aplicação. Sejam eles logs de terminal ou 
+retorno para o usuário, logs de status ou reportando um erro.
+"""
+
 import sys
 from server import messageHUB
 
