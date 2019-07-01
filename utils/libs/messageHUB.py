@@ -1,3 +1,10 @@
+"""
+messageHUB.py
+
+MessageHUB.py é o responsável por exibir as mensagens de retorno, sejam do logger ou de outra classe. Ele é o hub central que exibe 
+as mensagens no console ou na interface pro usuário.
+"""
+
 import sys
 
 class MessageHUB:
