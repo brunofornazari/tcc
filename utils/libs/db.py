@@ -1,3 +1,10 @@
+"""
+db.py
+
+DB.py é responsável por fazer a ponte entre o banco de dados em SQLite 3.0 e a aplicação. Com ele é feita a consulta, a 
+importação de dados e a gravação de novos registros.
+"""
+
 import sqlite3
 
 dbName = 'TCC-database.db'
